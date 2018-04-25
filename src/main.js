@@ -1,8 +1,54 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router'
 import App from './App.vue'
 import 'bootstrap'
+import Activities from './components/Activities.vue'
+import Jeopardy from './components/Jeopardy.vue'
+import DragDrop from './components/DragDrop.vue'
+import Memory from './components/Memory.vue'
+import Coloring from './components/Coloring.vue'
+import Resources from './components/Certificate.vue'
+import EnterInformation from './components/EnterInformation.vue'
+
+Vue.use(VueRouter)
+
+const routes = [
+  {
+    path: '/',
+    component:Activities
+  },
+  {
+    path: '/jeopardy',
+    component:Jeopardy
+  },
+  {
+    path: '/drag-drop',
+    component: DragDrop
+  },
+  {
+    path: '/memory',
+    component: Memory
+  },
+  {
+    path: '/coloring',
+    component: Coloring
+  },
+  {
+    path: '/resources',
+    component: Resources
+  },
+  {
+    path: '/enter-info',
+    component: EnterInformation
+  }
+]
+
+const router = new VueRouter({
+  routes
+})
 
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })
