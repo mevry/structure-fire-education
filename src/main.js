@@ -7,7 +7,7 @@ import Jeopardy from './components/Jeopardy.vue'
 import DragDrop from './components/DragDrop.vue'
 import Memory from './components/Memory.vue'
 import Coloring from './components/Coloring.vue'
-import Resources from './components/Certificate.vue'
+import Resources from './components/Resources.vue'
 import EnterInformation from './components/EnterInformation.vue'
 
 Vue.use(VueRouter)

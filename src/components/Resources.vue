@@ -1,13 +1,13 @@
 <template>
   <div class="container-fluid">
 
-          <h1>Certificate Component</h1>
+          <h1>Resources Component</h1>
 
       </div>
 </template>
 <script>
 export default {
-  name: 'jeopardy'
+  name: 'resources'
 };
 </script>
 <style scoped>
