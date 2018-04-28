@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import 'bootstrap'
-import Activities from './components/Activities.vue'
+import './style/main.scss'
+import Menu from './components/Menu.vue'
 import Jeopardy from './components/Jeopardy.vue'
 import DragDrop from './components/DragDrop.vue'
 import Memory from './components/Memory.vue'
@@ -15,7 +16,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component:Activities
+    component:Menu
   },
   {
     path: '/jeopardy',
