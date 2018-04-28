@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import 'bootstrap'
 import './style/main.scss'
-import Menu from './components/Menu.vue'
+import SiteMenu from './components/SiteMenu.vue'
 import Jeopardy from './components/Jeopardy.vue'
 import DragDrop from './components/DragDrop.vue'
 import Memory from './components/Memory.vue'
@@ -16,7 +16,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component:Menu
+    component:SiteMenu
   },
   {
     path: '/jeopardy',
