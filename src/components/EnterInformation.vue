@@ -8,15 +8,15 @@
       </div>
       <div class="form-group">
         <label class="form-control-label" for="lastname">Last Name</label>
-        <input v-model="sharedState.LastName" class="form-control form-control-lg" type="text" id="lastname">
+        <input v-model.lazy="sharedState.LastName" class="form-control form-control-lg" type="text" id="lastname">
       </div>
       <div class="form-group">
         <label class="form-control-label" for="school">School Name</label>
-        <input v-model="sharedState.School" class="form-control form-control-lg" type="text" id="school">
+        <input v-model.lazy="sharedState.School" class="form-control form-control-lg" type="text" id="school">
       </div>
       <div class="form-group">
         <label class="form-control-label" for="teachername">Teacher's Name</label>
-        <input v-model="sharedState.Teacher" class="form-control form-control-lg" type="text" id="teacher">
+        <input v-model.lazy="sharedState.Teacher" class="form-control form-control-lg" type="text" id="teacher">
       </div>
       <button @click.prevent="$emit('save-info',this.$data.first)" class="btn btn-primary" type="submit">Save</button>
     </form>

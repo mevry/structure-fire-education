@@ -1,21 +1,24 @@
 <template>
   <div class="container-fluid text-center h-100">
 
-          <h1>Drag &amp; Drop Component</h1>
+          <h1>Drag &amp; Drop</h1>
+          <p>Rearrange the elements below to earn a badge!</p>
+          <h3 class="mt-5">What should you do if you are on fire?</h3>
           <draggable v-model="stopDropRollAnswers" :class="[{win : stopDropRollComplete}]" @start="drag=true" @end="checkStopDropRollAnswers" class="row">
             <div class="col" v-for="item in stopDropRollAnswers" :key="item.id">
               <h2 class="drag-item" >{{item.val}}</h2>
             </div>
           </draggable>
 
-          <div class="row">
+          <h3 class="mt-5">Match the fire types with their class.</h3>
+          <div class="row">            
             <div class="col mx-3" v-for="item in fireClassQuestions" :key="item.id">
-              <p>{{item.val}}</p>
+              <h1>{{item.val}}</h1>
             </div>
           </div>
 
           <draggable v-model="fireClassAnswers" :class="[{win : fireClassComplete}]" @end="checkFireClassAnswers" class="row">
-            <div class="col drag-item mx-3" v-for="item in fireClassAnswers" :key="item.id">
+            <div class="col mx-3" v-for="item in fireClassAnswers" :key="item.id">
               <img :src="item.url" />
               <p>{{item.desc}}</p>
             </div>
