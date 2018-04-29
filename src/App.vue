@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <site-header></site-header>
+    <detail-bar></detail-bar>
       <transition name="fade" mode="out-in">
-        <router-view></router-view>
+        <keep-alive>
+          <router-view></router-view>
+        </keep-alive>
       </transition>
   </div>
 </template>
@@ -10,7 +13,7 @@
 <script>
 import Header from './components/SiteHeader.vue'
 import store from './store.js'
-
+import DetailBar from './components/DetailBar.vue'
 export default {
   name: 'app',
   data () {
@@ -19,7 +22,8 @@ export default {
     }
   },
   components:{
-    'site-header':Header
+    'site-header':Header,
+    'detail-bar':DetailBar
   }
 }
 </script>

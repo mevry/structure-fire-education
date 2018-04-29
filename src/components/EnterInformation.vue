@@ -4,7 +4,7 @@
     <form>
       <div class="form-group">
         <label class="form-control-label" for="firstname">First Name</label>
-        <input v-model="sharedState.FirstName" class="form-control form-control-lg" type="text" id="firstname">
+        <input v-model.lazy="sharedState.FirstName" class="form-control form-control-lg" type="text" id="firstname">
       </div>
       <div class="form-group">
         <label class="form-control-label" for="lastname">Last Name</label>
