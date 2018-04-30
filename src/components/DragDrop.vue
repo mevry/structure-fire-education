@@ -2,7 +2,6 @@
   <div class="container-fluid text-center h-100" >
     <div>
       <badge-modal v-if="DragDropComplete && showModal" @close="showModal = false"></badge-modal>
-      <h3 slot="header">custom header</h3>
     </div>
     <div id="stopDropRollMatch" :class="[{win : stopDropRollComplete}]">
       <h1>Drag &amp; Drop</h1>
@@ -270,7 +269,7 @@ export default {
 <style scoped>
   .drag-item{
     border: 1px solid rgb(182, 182, 182);
-    box-shadow: 1px 1px 2px rgb(202, 202, 202);
+    box-shadow: 1px 1px 2px rgb(200, 200, 200);
     padding: 1em;
   }
   .win{
