@@ -10,6 +10,7 @@ import Memory from './components/Memory.vue'
 import Coloring from './components/Coloring.vue'
 import Resources from './components/Resources.vue'
 import EnterInformation from './components/EnterInformation.vue'
+import BadgeEarned from './components/BadgeEarned.vue'
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,10 @@ const routes = [
   {
     path: '/enter-info',
     component: EnterInformation
+  },
+  {
+    path: '/badge-modal',
+    component: BadgeEarned
   }
 ]
 

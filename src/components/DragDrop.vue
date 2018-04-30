@@ -1,142 +1,146 @@
 <template>
   <div class="container-fluid text-center h-100" >
+    <div>
+      <badge-modal v-if="DragDropComplete && showModal" @close="showModal = false"></badge-modal>
+      <h3 slot="header">custom header</h3>
+    </div>
+    <div id="stopDropRollMatch" :class="[{win : stopDropRollComplete}]">
+      <h1>Drag &amp; Drop</h1>
+      <p>Rearrange the elements below to earn a badge!</p>
+      <h3 class="mt-5">What should you do if you are on fire?</h3>
+      <draggable
+      v-model="stopDropRollAnswers"
+      @start="drag=true"
+      @end="checkStopDropRollAnswers"
+      class="row">
+        <div class="col" v-for="item in stopDropRollAnswers" :key="item.id" >
+          <h2 class="drag-item" :style="{ backgroundColor: item.color }">{{item.val}}</h2>
+        </div>
+      </draggable>
+    </div><!--stopDropRollMatch-->
 
-          <div id="stopDropRollMatch" :class="[{win : stopDropRollComplete}]">
-            <h1>Drag &amp; Drop</h1>
-            <p>Rearrange the elements below to earn a badge!</p>
-            <h3 class="mt-5">What should you do if you are on fire?</h3>
-            <draggable 
-            v-model="stopDropRollAnswers"
-            @start="drag=true"
-            @end="checkStopDropRollAnswers"
-            class="row">
-              <div class="col" v-for="item in stopDropRollAnswers" :key="item.id" >
-                <h2 class="drag-item" :style="{ backgroundColor: item.color }">{{item.val}}</h2>
+      <div id="fireClassMatch" :class="[{win : fireClassComplete}]">
+        <h3 class="mt-5">Match the fire types with their class.</h3>
+        <div class="d-flex justify-content-around">
+          <div class="col mx-3" v-for="item in fireClassQuestions" :key="item.id">
+            <h1>{{item.val}}</h1>
+          </div>
+        </div>
+
+
+      <div class="d-flex justify-content-around">
+        <!--Drop Zone 1-->
+        <div tag="div" class="drop-zone-container col py-4">
+          <draggable
+            v-model="fireClassDropZone.one"
+            @add="checkIfSlotFull('one')"
+            @remove="checkIfSlotFull('one')"
+            @end="checkFireClassAnswers"
+
+            :options="dropZoneOptions.one"
+            id="dropZoneOne"
+            class="drop-zone">
+              <div class="" v-for="item in fireClassDropZone.one" :key="item.id">
+                <img class="img-fluid" :src="item.url" />
+                <h6>{{item.desc}}</h6>
               </div>
-            </draggable>
-          </div><!--stopDropRollMatch-->  
-  
-           <div id="fireClassMatch" :class="[{win : fireClassComplete}]">
-              <h3 class="mt-5">Match the fire types with their class.</h3>
-              <div class="d-flex justify-content-around">      
-                <div class="col mx-3" v-for="item in fireClassQuestions" :key="item.id">
-                  <h1>{{item.val}}</h1>
-                </div>
-              </div>
-          
-           
-            <div class="d-flex justify-content-around">
-              <!--Drop Zone 1-->
-              <div tag="div" class="drop-zone-container col py-4">
-                <draggable
-                  v-model="fireClassDropZone.one" 
-                  @add="checkIfSlotFull('one')"
-                  @remove="checkIfSlotFull('one')"
-                  @end="checkFireClassAnswers"
-        
-                  :options="dropZoneOptions.one" 
-                  id="dropZoneOne"
-                  class="drop-zone">
-                    <div class="" v-for="item in fireClassDropZone.one" :key="item.id">
-                      <img class="img-fluid" :src="item.url" />
-                      <h6>{{item.desc}}</h6>
-                    </div>
-                </draggable>
-              </div>
-  
-              <!--Drop Zone 2-->
-              <div class="drop-zone-container col py-4">
-                <draggable 
-                  v-model="fireClassDropZone.two" 
-                  @add="checkIfSlotFull('two')"
-                  @remove="checkIfSlotFull('two')"
-                  @end="checkFireClassAnswers"
-        
-                  :options="dropZoneOptions.two" 
-                  id="dropZoneTwo"
-                  class="drop-zone">
-                    <div  v-for="item in fireClassDropZone.two" :key="item.id">
-                      <img class="img-fluid" :src="item.url" />
-                      <h6>{{item.desc}}</h6>
-                    </div>
-                  </draggable>
-              </div>
-  
-              <!--Drop Zone 3-->
-              <div class="drop-zone-container col py-4">
-                <draggable 
-                  v-model="fireClassDropZone.three" 
-                  @add="checkIfSlotFull('three')"
-                  @remove="checkIfSlotFull('three')"
-                  @end="checkFireClassAnswers"
-        
-                  :options="dropZoneOptions.three" 
-                  id="dropZoneThree"
-                  class="drop-zone">
-                    <div  v-for="item in fireClassDropZone.three" :key="item.id">
-                      <img class="img-fluid" :src="item.url" />
-                      <h6>{{item.desc}}</h6>
-                    </div>
-                  </draggable>
-              </div>
-  
-              <!--Drop Zone 4-->
-              <div class="drop-zone-container col py-4">
-                <draggable 
-                  v-model="fireClassDropZone.four" 
-                  @add="checkIfSlotFull('four')"
-                  @remove="checkIfSlotFull('four')"
-                  @end="checkFireClassAnswers"
-        
-                  :options="dropZoneOptions.four" 
-                  id="dropZoneFour"
-                  class="drop-zone">
-                    <div  v-for="item in fireClassDropZone.four" :key="item.id">
-                      <img class="img-fluid" :src="item.url" />
-                      <h6>{{item.desc}}</h6>
-                    </div>
-                  </draggable>
-              </div>
-  
-              <!--Drop Zone 5-->
-              <div class="drop-zone-container col py-4">
-                <draggable 
-                  v-model="fireClassDropZone.five" 
-                  @add="checkIfSlotFull('five')"
-                  @remove="checkIfSlotFull('five')"
-                  @end="checkFireClassAnswers"
-        
-                  :options="dropZoneOptions.five" 
-                  id="dropZoneFive"
-                  class="drop-zone">
-                    <div v-for="item in fireClassDropZone.five" :key="item.id">
-                      <img class="img-fluid" :src="item.url" />
-                      <h6>{{item.desc}}</h6>
-                    </div>
-                  </draggable>
-              </div>
-            </div>
-  
-  
-            <!--Pull From List-->       
-            <draggable
-            v-model="fireClassAnswers"
-            @remove="checkFireClassAnswers"
-            :options="{group:'fire-class'}"
-            id="sourceZone"         
-            class="d-flex justify-content-around py-3">
-              <div class="col" v-for="item in fireClassAnswers" :key="item.id">
+          </draggable>
+        </div>
+
+        <!--Drop Zone 2-->
+        <div class="drop-zone-container col py-4">
+          <draggable
+            v-model="fireClassDropZone.two"
+            @add="checkIfSlotFull('two')"
+            @remove="checkIfSlotFull('two')"
+            @end="checkFireClassAnswers"
+
+            :options="dropZoneOptions.two"
+            id="dropZoneTwo"
+            class="drop-zone">
+              <div  v-for="item in fireClassDropZone.two" :key="item.id">
                 <img class="img-fluid" :src="item.url" />
                 <h6>{{item.desc}}</h6>
               </div>
             </draggable>
-         </div><!--fireClassMatch-->
-      </div><!--container-->
+        </div>
+
+        <!--Drop Zone 3-->
+        <div class="drop-zone-container col py-4">
+          <draggable
+            v-model="fireClassDropZone.three"
+            @add="checkIfSlotFull('three')"
+            @remove="checkIfSlotFull('three')"
+            @end="checkFireClassAnswers"
+
+            :options="dropZoneOptions.three"
+            id="dropZoneThree"
+            class="drop-zone">
+              <div  v-for="item in fireClassDropZone.three" :key="item.id">
+                <img class="img-fluid" :src="item.url" />
+                <h6>{{item.desc}}</h6>
+              </div>
+            </draggable>
+        </div>
+
+        <!--Drop Zone 4-->
+        <div class="drop-zone-container col py-4">
+          <draggable
+            v-model="fireClassDropZone.four"
+            @add="checkIfSlotFull('four')"
+            @remove="checkIfSlotFull('four')"
+            @end="checkFireClassAnswers"
+
+            :options="dropZoneOptions.four"
+            id="dropZoneFour"
+            class="drop-zone">
+              <div  v-for="item in fireClassDropZone.four" :key="item.id">
+                <img class="img-fluid" :src="item.url" />
+                <h6>{{item.desc}}</h6>
+              </div>
+            </draggable>
+        </div>
+
+        <!--Drop Zone 5-->
+        <div class="drop-zone-container col py-4">
+          <draggable
+            v-model="fireClassDropZone.five"
+            @add="checkIfSlotFull('five')"
+            @remove="checkIfSlotFull('five')"
+            @end="checkFireClassAnswers"
+
+            :options="dropZoneOptions.five"
+            id="dropZoneFive"
+            class="drop-zone">
+              <div v-for="item in fireClassDropZone.five" :key="item.id">
+                <img class="img-fluid" :src="item.url" />
+                <h6>{{item.desc}}</h6>
+              </div>
+            </draggable>
+        </div>
+      </div>
+
+
+      <!--Pull From List-->
+      <draggable
+      v-model="fireClassAnswers"
+      @remove="checkFireClassAnswers"
+      :options="{group:'fire-class'}"
+      id="sourceZone"
+      class="d-flex justify-content-around py-3">
+        <div class="col" v-for="item in fireClassAnswers" :key="item.id">
+          <img class="img-fluid" :src="item.url" />
+          <h6>{{item.desc}}</h6>
+        </div>
+      </draggable>
+    </div><!--fireClassMatch-->
+</div><!--container-->
 </template>
 <script>
 import draggable from 'vuedraggable'
 import store from '../store'
 import EventBus from '../event-bus'
+import BadgeModal from '../components/BadgeEarned'
 import ClassA from '../img/fc/class-a.png'
 import ClassB from '../img/fc/class-b.png'
 import ClassC from '../img/fc/class-c.png'
@@ -206,15 +210,19 @@ export default {
             name:'fire-class',
             put:true
           }
-        }           
-      }
+        }
+      },
+      showModal:true
     }
   },
   components:{
-    draggable
+    draggable,
+    'badge-modal':BadgeModal
   },
   computed:{
-
+    DragDropComplete(){
+      return this.sharedState.DragDropPass
+    }
   },
   methods:{
     emitMethod(evt,payload){
@@ -224,7 +232,7 @@ export default {
       if(this.stopDropRollComplete && this.fireClassComplete){
         this.sharedState.DragDropPass = true;
         this.emitMethod('drag-drop-completed', true);
-      }    
+      }
     },
     checkStopDropRollAnswers(){
       if(this.stopDropRollAnswers[0].id == 1 &&
@@ -253,7 +261,7 @@ export default {
       if(this.fireClassDropZone[zoneNumber].length > 0){
         this.dropZoneOptions[zoneNumber].group.put = false;
       }else{
-        this.dropZoneOptions[zoneNumber].group.put = true;       
+        this.dropZoneOptions[zoneNumber].group.put = true;
       }
     }
   }
@@ -270,7 +278,7 @@ export default {
   }
 
   .drop-zone-container{
- 
+
     min-height: 150px;
 
   }
