@@ -1,8 +1,5 @@
 <template>
-  <div class="container-fluid text-center h-100" >
-    <div>
-      <badge-modal v-if="DragDropComplete && showModal" @close="showModal = false"></badge-modal>
-    </div>
+  <div id="rootContainer" class="container-fluid text-center h-100" >
     <div id="stopDropRollMatch" :class="[{win : stopDropRollComplete}]">
       <h1>Drag &amp; Drop</h1>
       <p>Rearrange the elements below to earn a badge!</p>
@@ -139,7 +136,7 @@
 import draggable from 'vuedraggable'
 import store from '../store'
 import EventBus from '../event-bus'
-import BadgeModal from '../components/BadgeEarned'
+//import BadgeModal from '../components/BadgeEarned'
 import ClassA from '../img/fc/class-a.png'
 import ClassB from '../img/fc/class-b.png'
 import ClassC from '../img/fc/class-c.png'
@@ -210,13 +207,11 @@ export default {
             put:true
           }
         }
-      },
-      showModal:true
+      }
     }
   },
   components:{
-    draggable,
-    'badge-modal':BadgeModal
+    draggable
   },
   computed:{
     DragDropComplete(){
@@ -230,7 +225,8 @@ export default {
     checkDragAndDropComplete(){
       if(this.stopDropRollComplete && this.fireClassComplete){
         this.sharedState.DragDropPass = true;
-        this.emitMethod('drag-drop-completed', true);
+        this.emitMethod('activity-completed', "Drag Drop");
+        console.log('Drag & Drop Completed');
       }
     },
     checkStopDropRollAnswers(){
@@ -267,6 +263,9 @@ export default {
 };
 </script>
 <style scoped>
+  #rootContainer{
+    font-family: 'Century Gothic', sans-serif;
+  }
   .drag-item{
     border: 1px solid rgb(182, 182, 182);
     box-shadow: 1px 1px 2px rgb(200, 200, 200);

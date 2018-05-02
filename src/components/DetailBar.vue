@@ -21,6 +21,7 @@ export default {
   },
   methods:{
     badgeQuantity(){
+      console.log("badgeQuantity fired")
       let qty = 0;
       if(this.sharedState.JeopardyScore > 80){
         qty++
@@ -35,7 +36,7 @@ export default {
     }
   },
   mounted(){
-    EventBus.$on('drag-drop-completed', this.badgeQuantity);
+    EventBus.$on('activity-completed', this.badgeQuantity);
   }
 
 }
