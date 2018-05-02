@@ -1,8 +1,8 @@
 <template>
   <div class="container" style="height:80%;">
     <badge-modal v-if="showModal" @close="showModal = false"></badge-modal>
-    <site-header></site-header>
-    <detail-bar></detail-bar>
+    <site-header class="d-print-none"></site-header>
+    <detail-bar class="d-print-none"></detail-bar>
       <transition name="fade" mode="out-in">
         <keep-alive>
           <router-view></router-view>
@@ -50,5 +50,7 @@ export default {
 .fade-enter, .fade-leave-to{
   opacity: 0;
 }
-
+@page {
+  size:auto
+}
 </style>

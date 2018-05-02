@@ -10,7 +10,7 @@ import Memory from './components/Memory.vue'
 import Coloring from './components/Coloring.vue'
 import Resources from './components/Resources.vue'
 import EnterInformation from './components/EnterInformation.vue'
-
+import Certificate from './components/Certificate.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +38,10 @@ const routes = [
   {
     path: '/resources',
     component: Resources
+  },
+  {
+    path: '/certificate',
+    component: Certificate
   },
   {
     path: '/enter-info',
