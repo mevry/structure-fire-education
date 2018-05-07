@@ -1,0 +1,74 @@
+General Site Requirements
+- HTML Body Backgrounds
+- Div Backgrounds
+- Fonts
+- Colors
+- On site enter, add redirect to EnterInformation if student hasnt
+
+EnterInformation
+- Add instruction dialog to fireman
+- Reposition form elements
+- Save button validate
+- Save button redirect to SiteMenu
+
+SiteHeader
+- branding (TFD logo)
+- Add icons
+- Font Size & Colors
+- Conditional link to certificate
+
+DetailBar
+- Badge icons
+
+SiteMenu
+- More instructions?
+- Smaller icons
+- Conditional certificate link
+- Visual separation of activities and supporting links
+
+Jeopardy
+- Title style
+- instructions
+- column d-flex
+- Category header font size
+- Tile styles
+  -> Hover
+  -> Correct/Incorrect Feedback
+- Current Points style
+
+JeopardyModal
+- Layout/style
+- Change selection to text box/square
+- Validation before submission (must select something)
+
+Drag & Drop
+- instructions
+- Stop, drop, roll tile styles
+- Fire Classes
+  -> Fix img size (keeps expanding)
+  -> Smoother animation
+  -> Drop zone style
+
+Memory
+- instructions
+- Update images
+- background color?
+- vertical center fireman?
+
+Printables
+- Create
+- Add files for upload
+- Prepped for print (pdf?)
+
+Resources
+- Create
+
+Certificate
+- Style (Make it pretty)
+- Update verbage
+- Add badges
+- Jeopardy gold/silver/bronze badge + score
+
+
+
+

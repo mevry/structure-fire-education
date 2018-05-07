@@ -1,7 +1,7 @@
 <template>
-<div class="container-fluid text-center py-5">
-    <h1>Menu Component</h1>
-    <div class="d-flex justify-content-around pt-5">
+<div class="container-fluid text-center py-3">
+<p>Select an activity below to get started</p>
+    <div class="d-flex justify-content-around pt-3">
         <div class="">
             <router-link to="/jeopardy" tag="div" class="activity-link mx-1">
                 <h1>Jeopardy</h1>
@@ -23,8 +23,8 @@
     </div>
     <div class="d-flex justify-content-around pt-5">
         <div class="">
-            <router-link to="/coloring" tag="div" class="activity-link mx-1">
-                <h1>Coloring</h1>
+            <router-link to="/printables" tag="div" class="activity-link mx-1">
+                <h1>Printables</h1>
                 <img src="../img/250x300.png" />
             </router-link>
         </div>

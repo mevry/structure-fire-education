@@ -38,7 +38,7 @@ export default {
     if(!this.enterInfo){
       this.$route.router.go('/enter-info');
     }
-    let self = this;   
+    let self = this;
     EventBus.$on('activity-completed', function(payload){
       self.completed = payload.completed;
       self.activity = payload.activity;
@@ -49,17 +49,16 @@ export default {
 </script>
 
 <style lang="scss">
-html{
- 
-}
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
 body{
     font-family: 'Century Gothic', Helvetica, serif;
     background: url('./img/bg1.png') no-repeat;
     background-size: cover;
      background-color: #1217ad;
-     color:white;
+     color:rgb(0, 0, 0);
 }
 
+//component transitions
 .fade-enter-active, .fade-leave-active{
   transition: all .4s ease;
 }
