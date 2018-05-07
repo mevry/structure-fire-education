@@ -6,19 +6,19 @@
 
           <div class="modal-header">
             <slot name="header">
-              Activity Complete!
+              {{activity}} {{completionStatus}}
             </slot>
           </div>
 
           <div class="modal-body">
             <slot name="body">
-              You earned a badge!
+              {{returnMessage}}
             </slot>
           </div>
 
           <div class="modal-footer">
             <slot name="footer">
-              You now have ___ badges.
+              You have {{badgeQuantity}} of 3 badges.
               <button class="modal-default-button" @click="$emit('close')">
                 OK
               </button>
@@ -31,11 +31,55 @@
   </transition>
 </template>
 <script>
+import store from '../store'
+import EventBus from '../event-bus'
 export default {
   name:"badge-earned-modal",
+  props:['completed','activity'],
+  data(){
+    return{
+      sharedState:store.state,
+    }
+  },
+  computed:{
+    propsObject(){
+      return JSON.stringify(this.activity)
+    },
+    returnMessage(){
+      if(this.completed){
+        return "You earned a badge!"
+      }else{
+        return "Please reload the activity and try again."
+      }
+    },
+    completionStatus(){
+      if(this.completed){
+        return "Completed"
+      }else{
+        return "Incomplete"
+      }
+    },
+    badgeQuantity(){
+      console.log("badgeQuantity fired")
+      let qty = 0;
+      if(this.sharedState.JeopardyScore > 80){
+        qty++
+      }
+      if(this.sharedState.DragDropPass){
+        qty++
+      }
+      if(this.sharedState.MemoryPass){
+        qty++
+      }
+      
+      return qty;
+      
+    },
+  }
+
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .modal-mask {
   position: fixed;
   z-index: 9998;

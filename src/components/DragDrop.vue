@@ -225,7 +225,7 @@ export default {
     checkDragAndDropComplete(){
       if(this.stopDropRollComplete && this.fireClassComplete){
         this.sharedState.DragDropPass = true;
-        this.emitMethod('activity-completed', "Drag Drop");
+        this.emitMethod('activity-completed', {activity:"Drag & Drop", completed:true});
         console.log('Drag & Drop Completed');
       }
     },

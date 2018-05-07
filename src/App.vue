@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="height:80%;">
-    <badge-modal v-if="showModal" @close="showModal = false"></badge-modal>
+    <badge-modal v-if="showModal" :completed="completed" :activity="activity" @close="showModal = false"></badge-modal>
     <site-header class="d-print-none"></site-header>
     <detail-bar class="d-print-none"></detail-bar>
       <transition name="fade" mode="out-in">
@@ -22,12 +22,9 @@ export default {
   data () {
     return {
       sharedState: store.state,
-      showModal:false
-    }
-  },
-  methods:{
-    setModalTrue(){
-      this.showModal = true;
+      showModal:false,
+      completed:false,
+      activity:''
     }
   },
   components:{
@@ -36,13 +33,20 @@ export default {
     'badge-modal':BadgeModal
   },
   mounted(){
-    let self = this;
-    EventBus.$on('activity-completed', self.setModalTrue)
+    let self = this;   
+    EventBus.$on('activity-completed', function(payload){
+      self.completed = payload.completed;
+      self.activity = payload.activity;
+      self.showModal = true;
+    });
   }
 }
 </script>
 
 <style lang="scss">
+body{
+    font-family: 'Century Gothic', Helvetica, serif;
+}
 
 .fade-enter-active, .fade-leave-active{
   transition: all .4s ease;

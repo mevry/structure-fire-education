@@ -1,6 +1,7 @@
 <template>
- <div class=" h-100 inline-block">
+ <div class="text-center h-100 inline-block">
 	 <h1>Memory Component</h1>
+	 <p>Match the cards to win a badge.</p>
  	 <div id="rootContainer" class=" h-100 inline-block">
 		<link rel="stylesheet" href="./dist/memory.bundle.css">
 	    <div class="wrap">
@@ -115,7 +116,7 @@ export default {
 			this.paused = true;
 			console.log("win fired");
 			self.sharedState.MemoryPass = true;
-			self.emitMethod('activity-completed', "Memory");
+			self.emitMethod('activity-completed', {activity:"Jeopardy", completed:true});
 		},
 
 		showModal: function(){
