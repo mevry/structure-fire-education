@@ -26,7 +26,7 @@
 </template>
 <script>
 import $ from 'jquery'
-import bbq from '../img/mem/bbq.png'
+import bbq from '../img/memBbq.png'
 import candle from '../img/mem/candle.png'
 import classA from '../img/mem/classA.png'
 import classB from '../img/mem/classB.png'

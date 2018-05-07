@@ -7,7 +7,7 @@ import SiteMenu from './components/SiteMenu.vue'
 import Jeopardy from './components/Jeopardy.vue'
 import DragDrop from './components/DragDrop.vue'
 import Memory from './components/Memory.vue'
-import Coloring from './components/Coloring.vue'
+import Printables from './components/Printables.vue'
 import Resources from './components/Resources.vue'
 import EnterInformation from './components/EnterInformation.vue'
 import Certificate from './components/Certificate.vue'
@@ -32,8 +32,8 @@ const routes = [
     component: Memory
   },
   {
-    path: '/coloring',
-    component: Coloring
+    path: '/printables',
+    component: Printables
   },
   {
     path: '/resources',

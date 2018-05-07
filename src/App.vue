@@ -17,6 +17,7 @@ import store from './store.js'
 import DetailBar from './components/DetailBar.vue'
 import BadgeModal from './components/BadgeModal.vue'
 import EventBus from './event-bus'
+import background from './img/bg1.png'
 export default {
   name: 'app',
   data () {
@@ -24,7 +25,8 @@ export default {
       sharedState: store.state,
       showModal:false,
       completed:false,
-      activity:''
+      activity:'',
+      enterInfo:false
     }
   },
   components:{
@@ -33,6 +35,9 @@ export default {
     'badge-modal':BadgeModal
   },
   mounted(){
+    if(!this.enterInfo){
+      this.$route.router.go('/enter-info');
+    }
     let self = this;   
     EventBus.$on('activity-completed', function(payload){
       self.completed = payload.completed;
@@ -44,8 +49,15 @@ export default {
 </script>
 
 <style lang="scss">
+html{
+ 
+}
 body{
     font-family: 'Century Gothic', Helvetica, serif;
+    background: url('./img/bg1.png') no-repeat;
+    background-size: cover;
+     background-color: #1217ad;
+     color:white;
 }
 
 .fade-enter-active, .fade-leave-active{

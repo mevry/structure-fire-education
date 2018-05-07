@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
 
-          <h1>Coloring Component</h1>
+          <h1>Printables</h1>
 
       </div>
 </template>

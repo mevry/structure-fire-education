@@ -137,11 +137,11 @@ import draggable from 'vuedraggable'
 import store from '../store'
 import EventBus from '../event-bus'
 //import BadgeModal from '../components/BadgeEarned'
-import ClassA from '../img/fc/class-a.png'
-import ClassB from '../img/fc/class-b.png'
-import ClassC from '../img/fc/class-c.png'
-import ClassD from '../img/fc/class-d.png'
-import ClassK from '../img/fc/class-k.png'
+import ClassA from '../img/dragClassA.png'
+import ClassB from '../img/dragClassB.png'
+import ClassC from '../img/dragClassC.png'
+import ClassD from '../img/memClassD.png'
+import ClassK from '../img/dragClassK.png'
 export default {
   name: 'drag-drop',
   data(){
