@@ -1,7 +1,7 @@
 <template>
   <div id="rootContainer" class="container-fluid text-center h-100" >
     <div id="stopDropRollMatch" :class="[{win : stopDropRollComplete}]">
-      <h1>Drag &amp; Drop</h1>
+      <h1>Drag &amp; Match</h1>
       <p>Rearrange the elements below to earn a badge!</p>
       <h3 class="mt-5">What should you do if you are on fire?</h3>
       <draggable
@@ -140,7 +140,7 @@ import EventBus from '../event-bus'
 import ClassA from '../img/dragClassA.png'
 import ClassB from '../img/dragClassB.png'
 import ClassC from '../img/dragClassC.png'
-import ClassD from '../img/memClassD.png'
+import ClassD from '../img/dragD.png'
 import ClassK from '../img/dragClassK.png'
 export default {
   name: 'drag-drop',
@@ -166,7 +166,7 @@ export default {
         five:[]
       },
       fireClassAnswers:[
-        {id:3,url:ClassC,desc:"Electrical Fire"},
+        {id:3,url:ClassC,desc:""},
         {id:4,url:ClassD,desc:"Flammable Metals"},
         {id:5,url:ClassK,desc:"Cooking Oils/Fats"},
         {id:1,url:ClassA,desc:"Combustible Materials"},
@@ -265,6 +265,7 @@ export default {
 <style scoped>
   #rootContainer{
     font-family: 'Century Gothic', sans-serif;
+    color: white;
   }
   .drag-item{
     border: 1px solid rgb(182, 182, 182);
@@ -282,11 +283,13 @@ export default {
   }
   .drop-zone{
     min-height: 140px;
-   background-color:#e2e2e2;
-    padding: 15px
+   background-color:white;
+   border-radius: 50%;
+    padding: 0;
+    box-shadow: inset 1px 1px 2px black;
   }
   #sourceZone{
     min-height: 125px;
-    background-color: #e2e2e2;
+
   }
 </style>

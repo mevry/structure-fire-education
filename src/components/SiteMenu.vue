@@ -10,7 +10,7 @@
         </div>
         <div class="">
             <router-link to="/drag-drop" tag="div" class="activity-link mx-1">
-                <h1>Drag &amp; Drop</h1>
+                <h1>Drag &amp; Match</h1>
                 <img src="../img/250x300.png" />
             </router-link>
         </div>
@@ -21,26 +21,7 @@
             </router-link>
         </div>
     </div>
-    <div class="d-flex justify-content-around pt-5">
-        <div class="">
-            <router-link to="/printables" tag="div" class="activity-link mx-1">
-                <h1>Printables</h1>
-                <img src="../img/250x300.png" />
-            </router-link>
-        </div>
-        <div class="">
-            <router-link to="/resources" tag="div" class="activity-link mx-1">
-                <h1>Resources</h1>
-                <img src="../img/250x300.png" />
-            </router-link>
-        </div>
-        <div class="">
-            <router-link to="/certificate" tag="div" class="activity-link mx-1">
-                <h1>Certificate</h1>
-                <img src="../img/250x300.png" />
-            </router-link>
-        </div>
-    </div>
+
 </div>
 </template>
 <script>

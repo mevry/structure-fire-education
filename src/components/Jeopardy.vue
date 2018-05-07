@@ -4,31 +4,31 @@
 
       </jeopardy-modal>
       <div class="col-8 offset-2">
-        <h1 class="text-center">Jeopardy Style Questions</h1>
+        <h1 class="text-center">Jeopardy</h1>
         <p class="text-center
         ">Select the tiles below and answer the question. You will get points for a correct answer. Get 6000 points to earn a badge!</p>
       </div>
-      <div class="row text-center py-3">
-        <div class="col"><h4>Home<br> Safety</h4></div>
-        <div class="col"><h4>Fire<br> Concepts</h4></div>
-        <div class="col"><h4>Outdoor<br> Safety</h4></div>
-        <div class="col"><h4>Firefighting<br> Methods</h4></div>
-        <div class="col"><h4>Emergency<br> Cases</h4></div>
+      <div id="jeopardyHeaderRow" class="row text-center py-1 my-3">
+        <div class="jeopardy-header col"><h5>Home<br> Safety</h5></div>
+        <div class="jeopardy-header col"><h5>Fire<br> Concepts</h5></div>
+        <div class="jeopardy-header col"><h5>Outdoor<br> Safety</h5></div>
+        <div class="jeopardy-header col"><h5>Firefighting<br> Methods</h5></div>
+        <div class="jeopardy-header col"><h5>Emergency<br> Cases</h5></div>
       </div>
       <div class="row">
         <div class="col">
           <div v-for="(question,index) in questionBank.columnOne"
               :key="question[index]"
-              class="jeopardy-cell col py-3 h2" 
+              class="jeopardy-cell col py-3 h2"
               :class="{'clicked':questionBank.columnOne[index].clickState}"
               @click="!questionBank.columnOne[index].clickState && renderJeopardyModal('columnOne',index)">
               {{(index+1)*100}}
-          </div>        
+          </div>
         </div>
         <div class="col">
           <div v-for="(question,index) in questionBank.columnTwo"
               :key="question[index]"
-              class="jeopardy-cell col py-3 h2" 
+              class="jeopardy-cell col py-3 h2"
               :class="{'clicked':questionBank.columnTwo[index].clickState}"
               @click="!questionBank.columnTwo[index].clickState && renderJeopardyModal('columnTwo',index)">
               {{(index+1)*100}}
@@ -37,7 +37,7 @@
         <div class="col">
           <div v-for="(question,index) in questionBank.columnThree"
               :key="question[index]"
-              class="jeopardy-cell col py-3 h2" 
+              class="jeopardy-cell col py-3 h2"
               :class="{'clicked':questionBank.columnThree[index].clickState}"
               @click="!questionBank.columnThree[index].clickState && renderJeopardyModal('columnThree',index)">
               {{(index+1)*100}}
@@ -46,7 +46,7 @@
         <div class="col">
           <div v-for="(question,index) in questionBank.columnFour"
               :key="question[index]"
-              class="jeopardy-cell col py-3 h2" 
+              class="jeopardy-cell col py-3 h2"
               :class="{'clicked':questionBank.columnFour[index].clickState}"
               @click="!questionBank.columnFour[index].clickState && renderJeopardyModal('columnFour',index)">
               {{(index+1)*100}}
@@ -55,7 +55,7 @@
         <div class="col">
           <div v-for="(question,index) in questionBank.columnFive"
               :key="question[index]"
-              class="jeopardy-cell col py-3 h2" 
+              class="jeopardy-cell col py-3 h2"
               :class="{'clicked':questionBank.columnFive[index].clickState}"
               @click="!questionBank.columnFive[index].clickState && renderJeopardyModal('columnFive',index)">
               {{(index+1)*100}}
@@ -63,7 +63,7 @@
         </div>
       </div><!--End row-->
 
-      <h2 @submission="updatePoints()">Current Points: {{score}}</h2>
+      <h2 class="py-3" @submission="updatePoints()">Current Points: {{score}}</h2>
   </div>
 </template>
 <script>
@@ -86,7 +86,6 @@ export default {
       questionBank:{
         columnOne:[
           {
-            clickState:false,
             type:"tf",
             question:"Your home should have a smoke detector to warn you in case of a smoke emergency.",
             answer:[true],
@@ -103,7 +102,7 @@ export default {
               {
                 key:1,
                 value:"Parachute"
-              
+
               },
               {
                 key:2,
@@ -112,7 +111,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           },
           {
@@ -126,7 +125,7 @@ export default {
               partOne:"You should practice a family escape plan",
               partTwo:"times per year.",
             },
-            answer:["two", 2]
+            answer:["two", "2"]
           },
           {
             type:"multi",
@@ -140,7 +139,7 @@ export default {
               {
                 key:1,
                 value:"Sushi"
-              
+
               },
               {
                 key:2,
@@ -149,7 +148,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           }
         ],
@@ -171,7 +170,7 @@ export default {
               {
                 key:1,
                 value:"Parachute"
-              
+
               },
               {
                 key:2,
@@ -180,7 +179,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           },
           {
@@ -208,7 +207,7 @@ export default {
               {
                 key:1,
                 value:"Sushi"
-              
+
               },
               {
                 key:2,
@@ -217,7 +216,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           }
         ],
@@ -239,7 +238,7 @@ export default {
               {
                 key:1,
                 value:"Parachute"
-              
+
               },
               {
                 key:2,
@@ -248,7 +247,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           },
           {
@@ -276,7 +275,7 @@ export default {
               {
                 key:1,
                 value:"Sushi"
-              
+
               },
               {
                 key:2,
@@ -285,7 +284,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           }
         ],
@@ -307,7 +306,7 @@ export default {
               {
                 key:1,
                 value:"Parachute"
-              
+
               },
               {
                 key:2,
@@ -316,7 +315,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           },
           {
@@ -344,7 +343,7 @@ export default {
               {
                 key:1,
                 value:"Sushi"
-              
+
               },
               {
                 key:2,
@@ -353,7 +352,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           }
         ],
@@ -375,7 +374,7 @@ export default {
               {
                 key:1,
                 value:"Parachute"
-              
+
               },
               {
                 key:2,
@@ -384,7 +383,7 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           },
           {
@@ -412,7 +411,7 @@ export default {
               {
                 key:1,
                 value:"Sushi"
-              
+
               },
               {
                 key:2,
@@ -421,12 +420,12 @@ export default {
               {
                 key:3,
                 value:"Rope Ladder"
-              }             
+              }
             ]
           }
         ]
       }
-      
+
     }
   },
   methods:{
@@ -443,7 +442,7 @@ export default {
     updatePoints(correct){
       this.showJeopardyModal = false
       console.log("current point val: " + this.currentQuestionPV)
-      if(correct){       
+      if(correct){
         this.score += this.currentQuestionPV;
       }
       this.checkJeopardyComplete();
@@ -473,34 +472,34 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
- h1{
-   color:rgba(70, 43, 114,.5);
+.container-fluid{
+   background-color: rgba(255,255,255,.8);
+   border-radius: 4px;
+   box-shadow: 1px 1px 3px rgba(41, 38, 80, .5);
  }
+
  .jeopardy-cell{
+   background-color: white;
    text-align: center;
    cursor: pointer;
-   border: 1px solid gray;
-    border-radius: 4px;
+   border: 1px solid rgba(180, 180, 180, 0.75);
+    border-radius: 6px;
  }
  .clicked{
    cursor: default;
    background-color: lightgray;
  }
- .table{
-   th{
-     width: 20%;
-     font-size: larger;
-   }
-   td{
-     padding-bottom: 1.5rem;
-     padding-top: 1.5rem;
-     border: 1px solid gray;
-  
-  >.cell-content{
-    
-  }
+
+ #jeopardyHeaderRow{
+   border-bottom: 1px solid gray;
+   border-top: 1px solid gray;
+ }
+ .jeopardy-header{
+
+   >h5{
+     font-weight: bold;
    }
  }
+
 
 </style>

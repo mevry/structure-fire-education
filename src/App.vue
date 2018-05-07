@@ -68,4 +68,5 @@ body{
 @page {
   size:auto
 }
+
 </style>

@@ -35,6 +35,7 @@ Jeopardy
   -> Hover
   -> Correct/Incorrect Feedback
 - Current Points style
+- add reset
 
 JeopardyModal
 - Layout/style
