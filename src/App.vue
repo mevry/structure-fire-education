@@ -68,4 +68,7 @@ body{
 .white-font{
   color:white;
 }
+.neon-yellow{
+  color: #e3ff2c;
+}
 </style>

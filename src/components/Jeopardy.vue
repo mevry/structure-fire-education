@@ -1,69 +1,69 @@
 <template>
   <div class="container-fluid">
-      <jeopardy-modal v-if="showJeopardyModal" :questionObject="currentQuestion" :pointValue="currentQuestionPV" @submission="showJeopardyModal = false">
-
-      </jeopardy-modal>
+      <jeopardy-modal v-if="showJeopardyModal" :questionObject="currentQuestion" :pointValue="currentQuestionPV" @submission="showJeopardyModal = false"></jeopardy-modal>
       <div class="col-8 offset-2">
-        <h1 class="text-center">Jeopardy</h1>
-        <p class="text-center
+        <h1 class="text-center neon-yellow">Jeopardy</h1>
+        <p class="text-center white-font
         ">Select the tiles below and answer the question. You will get points for a correct answer. Get 6000 points to earn a badge!</p>
       </div>
-      <div id="jeopardyHeaderRow" class="row text-center py-1 my-3">
-        <div class="jeopardy-header col"><h5>Home<br> Safety</h5></div>
-        <div class="jeopardy-header col"><h5>Fire<br> Concepts</h5></div>
-        <div class="jeopardy-header col"><h5>Outdoor<br> Safety</h5></div>
-        <div class="jeopardy-header col"><h5>Firefighting<br> Methods</h5></div>
-        <div class="jeopardy-header col"><h5>Emergency<br> Cases</h5></div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnOne"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnOne[index].clickState}"
-              @click="!questionBank.columnOne[index].clickState && renderJeopardyModal('columnOne',index)">
-              {{(index+1)*100}}
-          </div>
+      <div id="gameBoard" class="pb-2 px-4">
+        <div id="jeopardyHeaderRow" class="row text-center py-2 my-3">
+          <div class="jeopardy-header col"><h5>Home<br> Safety</h5></div>
+          <div class="jeopardy-header col"><h5>Fire<br> Concepts</h5></div>
+          <div class="jeopardy-header col"><h5>Outdoor<br> Safety</h5></div>
+          <div class="jeopardy-header col"><h5>Firefighting<br> Methods</h5></div>
+          <div class="jeopardy-header col"><h5>Emergency<br> Cases</h5></div>
         </div>
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnTwo"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnTwo[index].clickState}"
-              @click="!questionBank.columnTwo[index].clickState && renderJeopardyModal('columnTwo',index)">
-              {{(index+1)*100}}
+        <div class="row">
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnOne"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'clicked':questionBank.columnOne[index].clickState}"
+                @click="!questionBank.columnOne[index].clickState && renderJeopardyModal('columnOne',index)">
+                {{(index+1)*100}}
+            </div>
           </div>
-        </div>
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnThree"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnThree[index].clickState}"
-              @click="!questionBank.columnThree[index].clickState && renderJeopardyModal('columnThree',index)">
-              {{(index+1)*100}}
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnTwo"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'clicked':questionBank.columnTwo[index].clickState}"
+                @click="!questionBank.columnTwo[index].clickState && renderJeopardyModal('columnTwo',index)">
+                {{(index+1)*100}}
+            </div>
           </div>
-        </div>
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnFour"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnFour[index].clickState}"
-              @click="!questionBank.columnFour[index].clickState && renderJeopardyModal('columnFour',index)">
-              {{(index+1)*100}}
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnThree"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'clicked':questionBank.columnThree[index].clickState}"
+                @click="!questionBank.columnThree[index].clickState && renderJeopardyModal('columnThree',index)">
+                {{(index+1)*100}}
+            </div>
           </div>
-        </div>
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnFive"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnFive[index].clickState}"
-              @click="!questionBank.columnFive[index].clickState && renderJeopardyModal('columnFive',index)">
-              {{(index+1)*100}}
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnFour"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'clicked':questionBank.columnFour[index].clickState}"
+                @click="!questionBank.columnFour[index].clickState && renderJeopardyModal('columnFour',index)">
+                {{(index+1)*100}}
+            </div>
           </div>
-        </div>
-      </div><!--End row-->
-
-      <h2 class="py-3" @submission="updatePoints()">Current Points: {{score}}</h2>
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnFive"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'clicked':questionBank.columnFive[index].clickState}"
+                @click="!questionBank.columnFive[index].clickState && renderJeopardyModal('columnFive',index)">
+                {{(index+1)*100}}
+            </div>
+          </div>
+        </div><!--End row-->
+  
+        <h2 class="py-3" @submission="updatePoints()">Current Points: {{score}}</h2>
+      </div><!--end gameBoard-->
   </div>
 </template>
 <script>
@@ -472,7 +472,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.container-fluid{
+#gameBoard{
    background-color: rgba(255,255,255,.8);
    border-radius: 4px;
    box-shadow: 1px 1px 3px rgba(41, 38, 80, .5);
@@ -492,7 +492,7 @@ export default {
 
  #jeopardyHeaderRow{
    border-bottom: 1px solid gray;
-   border-top: 1px solid gray;
+
  }
  .jeopardy-header{
 

@@ -1,21 +1,22 @@
 <template>
   <div id="rootContainer" class="container-fluid text-center h-100" >
-    <div id="stopDropRollMatch" :class="[{win : stopDropRollComplete}]">
-      <h1>Drag &amp; Match</h1>
+    <div id="stopDropRollMatch" >
+      <h1 class="neon-yellow">Drag &amp; Match</h1>
       <p>Rearrange the elements below to earn a badge!</p>
       <h3 class="mt-5">What should you do if you are on fire?</h3>
       <draggable
       v-model="stopDropRollAnswers"
       @start="drag=true"
       @end="checkStopDropRollAnswers"
+      
       class="row">
-        <div class="col" v-for="item in stopDropRollAnswers" :key="item.id" >
-          <h2 class="drag-item" :style="{ backgroundColor: item.color }">{{item.val}}</h2>
+        <div  class="col" v-for="item in stopDropRollAnswers" :key="item.id" >
+          <h2 :class="[{win : stopDropRollComplete}]" class="drag-item" :style="{ backgroundColor: item.color }">{{item.val}}</h2>
         </div>
       </draggable>
     </div><!--stopDropRollMatch-->
 
-      <div id="fireClassMatch" :class="[{win : fireClassComplete}]">
+      <div id="fireClassMatch">
         <h3 class="mt-5">Match the fire types with their class.</h3>
         <div class="d-flex justify-content-around">
           <div class="col mx-3" v-for="item in fireClassQuestions" :key="item.id">
@@ -26,17 +27,17 @@
 
       <div class="d-flex justify-content-around">
         <!--Drop Zone 1-->
-        <div tag="div" class="drop-zone-container ">
+        <div tag="div"  class="drop-zone-container ">
           <draggable
             v-model="fireClassDropZone.one"
             @add="checkIfSlotFull('one')"
             @remove="checkIfSlotFull('one')"
             @end="checkFireClassAnswers"
-
             :options="dropZoneOptions.one"
-            id="dropZoneOne"
-            class="drop-zone">
-              <div class="" v-for="item in fireClassDropZone.one" :key="item.id">
+            id="dropZoneOne" 
+            class="drop-zone"
+            :class="[{win : fireClassComplete}]">
+              <div  v-for="item in fireClassDropZone.one" :key="item.id">
                 <img class="img-fluid" :src="item.url" />
                 <h6>{{item.desc}}</h6>
               </div>
@@ -51,10 +52,10 @@
             @add="checkIfSlotFull('two')"
             @remove="checkIfSlotFull('two')"
             @end="checkFireClassAnswers"
-
             :options="dropZoneOptions.two"
             id="dropZoneTwo"
-            class="drop-zone">
+            class="drop-zone"
+            :class="[{win : fireClassComplete}]">
               <div  v-for="item in fireClassDropZone.two" :key="item.id">
                 <img class="img-fluid" :src="item.url" />
                 <h6>{{item.desc}}</h6>
@@ -69,10 +70,10 @@
             @add="checkIfSlotFull('three')"
             @remove="checkIfSlotFull('three')"
             @end="checkFireClassAnswers"
-
             :options="dropZoneOptions.three"
             id="dropZoneThree"
-            class="drop-zone">
+            class="drop-zone"
+            :class="[{win : fireClassComplete}]">
               <div  v-for="item in fireClassDropZone.three" :key="item.id">
                 <img class="img-fluid" :src="item.url" />
                 <h6>{{item.desc}}</h6>
@@ -87,10 +88,10 @@
             @add="checkIfSlotFull('four')"
             @remove="checkIfSlotFull('four')"
             @end="checkFireClassAnswers"
-
             :options="dropZoneOptions.four"
             id="dropZoneFour"
-            class="drop-zone">
+            class="drop-zone"
+            :class="[{win : fireClassComplete}]">
               <div  v-for="item in fireClassDropZone.four" :key="item.id">
                 <img class="img-fluid" :src="item.url" />
                 <h6>{{item.desc}}</h6>
@@ -105,10 +106,10 @@
             @add="checkIfSlotFull('five')"
             @remove="checkIfSlotFull('five')"
             @end="checkFireClassAnswers"
-
             :options="dropZoneOptions.five"
             id="dropZoneFive"
-            class="drop-zone">
+            class="drop-zone"
+            :class="[{win : fireClassComplete}]">
               <div v-for="item in fireClassDropZone.five" :key="item.id">
                 <img class="img-fluid" :src="item.url" />
                 <h6>{{item.desc}}</h6>
@@ -277,7 +278,7 @@ export default {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   }
   .win{
-    background-color: green;
+    box-shadow: 0 0 16px 6px #0ee42a !important;
   }
   .drop-zone-container{
     height: 150px;
@@ -290,6 +291,7 @@ export default {
    border-radius: 50%;
     padding: 0;
     box-shadow: inset 1px 1px 2px black;
+
   }
   #sourceZone{
     min-height: 150px;

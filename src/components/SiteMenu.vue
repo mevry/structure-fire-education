@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid text-center py-3">
-<h3>Select an activity below to get started</h3>
+<h3 class="neon-yellow">Select an activity below to get started</h3>
     <div class="d-flex justify-content-around mt-3 pt-3">
         <div class="activity-item-wrapper">
             <router-link to="/jeopardy" tag="div" class="activity-link mx-1">
@@ -33,7 +33,7 @@ export default {
     .activity-link {
         cursor: pointer;
     }
-h1,h3{
+h1{
     color: white;
     margin-bottom: 0;
 }

@@ -21,9 +21,9 @@
             </div>
         </div>
     </div>
-    <div class="d-flex">
+    <div class="d-flex justify-content-between">
         <span><strong>School:</strong> {{sharedStore.School}}</span>
-        <span>{{new Date().getMonth()}}</span>
+        <span><strong>Date: </strong>{{new Date().getMonth()+1}}/{{new Date().getDate()}}/{{new Date().getFullYear()}}</span>
         <span class=""><strong>Teacher:</strong> {{sharedStore.Teacher}}</span>
     </div>
 </div>
@@ -42,6 +42,11 @@ export default {
     computed:{
         date(){
             re
+        }
+    },
+    methods:{
+        getDate(){
+
         }
     }
 };

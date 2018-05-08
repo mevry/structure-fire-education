@@ -20,7 +20,7 @@
             <slot name="footer">
               You have {{badgeQuantity}} of 3 badges.
               <button class="modal-default-button" @click="$emit('close')">
-                <router-link to="/" class="nav-item nav-link">Save</router-link>
+                <router-link to="/" class="nav-item nav-link">OK</router-link>
               </button>   
             </slot>
           </div>
