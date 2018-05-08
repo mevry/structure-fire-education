@@ -1,5 +1,4 @@
 #rootContainer {
-	background: black;
 	min-height: 100%;
     font-family: "Century Gothic", sans-serif;
 }
@@ -68,7 +67,7 @@
 	}
 
   .front, .back {
-  	border: 1px solid black;
+  	border: 1px solid #754686;
   	backface-visibility: hidden;
   	position: absolute;
   	top: 0;

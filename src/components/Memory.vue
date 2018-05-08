@@ -1,6 +1,6 @@
 <template>
  <div class="text-center h-100 inline-block">
-	 <h1>Memory Component</h1>
+	 <h1>Memory Game</h1>
 	 <p>Match the cards to win a badge.</p>
  	 <div id="rootContainer" class=" h-100 inline-block">
 		<link rel="stylesheet" href="./dist/memory.bundle.css">

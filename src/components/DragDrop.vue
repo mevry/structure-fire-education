@@ -26,7 +26,7 @@
 
       <div class="d-flex justify-content-around">
         <!--Drop Zone 1-->
-        <div tag="div" class="drop-zone-container col py-4">
+        <div tag="div" class="drop-zone-container ">
           <draggable
             v-model="fireClassDropZone.one"
             @add="checkIfSlotFull('one')"
@@ -41,10 +41,11 @@
                 <h6>{{item.desc}}</h6>
               </div>
           </draggable>
+
         </div>
 
         <!--Drop Zone 2-->
-        <div class="drop-zone-container col py-4">
+        <div class="drop-zone-container">
           <draggable
             v-model="fireClassDropZone.two"
             @add="checkIfSlotFull('two')"
@@ -62,7 +63,7 @@
         </div>
 
         <!--Drop Zone 3-->
-        <div class="drop-zone-container col py-4">
+        <div class="drop-zone-container">
           <draggable
             v-model="fireClassDropZone.three"
             @add="checkIfSlotFull('three')"
@@ -80,7 +81,7 @@
         </div>
 
         <!--Drop Zone 4-->
-        <div class="drop-zone-container col py-4">
+        <div class="drop-zone-container">
           <draggable
             v-model="fireClassDropZone.four"
             @add="checkIfSlotFull('four')"
@@ -98,7 +99,7 @@
         </div>
 
         <!--Drop Zone 5-->
-        <div class="drop-zone-container col py-4">
+        <div class="drop-zone-container">
           <draggable
             v-model="fireClassDropZone.five"
             @add="checkIfSlotFull('five')"
@@ -123,9 +124,9 @@
       @remove="checkFireClassAnswers"
       :options="{group:'fire-class'}"
       id="sourceZone"
-      class="d-flex justify-content-around py-3">
+      class="d-flex justify-content-around mt-3 py-3">
         <div class="col" v-for="item in fireClassAnswers" :key="item.id">
-          <img class="img-fluid" :src="item.url" />
+          <img class="drag-image" :src="item.url" />
           <h6>{{item.desc}}</h6>
         </div>
       </draggable>
@@ -137,19 +138,19 @@ import draggable from 'vuedraggable'
 import store from '../store'
 import EventBus from '../event-bus'
 //import BadgeModal from '../components/BadgeEarned'
-import ClassA from '../img/dragClassA.png'
-import ClassB from '../img/dragClassB.png'
-import ClassC from '../img/dragClassC.png'
+import ClassA from '../img/dragA.png'
+import ClassB from '../img/dragB.png'
+import ClassC from '../img/dragC.png'
 import ClassD from '../img/dragD.png'
-import ClassK from '../img/dragClassK.png'
+import ClassK from '../img/dragK.png'
 export default {
   name: 'drag-drop',
   data(){
     return{
       stopDropRollAnswers:[
-        {id:3,val:"Roll",color:"#ffcce2"},
-        {id:1,val:"Stop",color:"#ccd9ff"},
-        {id:2,val:"Drop",color:"#ccfffc"}
+        {id:3,val:"Roll",color:"#d81167"},
+        {id:1,val:"Stop",color:"#0d41db"},
+        {id:2,val:"Drop",color:"#0ed3c8"}
       ],
       fireClassQuestions:[
         {id:1,val:"A"},
@@ -167,10 +168,10 @@ export default {
       },
       fireClassAnswers:[
         {id:3,url:ClassC,desc:""},
-        {id:4,url:ClassD,desc:"Flammable Metals"},
-        {id:5,url:ClassK,desc:"Cooking Oils/Fats"},
-        {id:1,url:ClassA,desc:"Combustible Materials"},
-        {id:2,url:ClassB,desc:"Flammable Liquid/Gas"}
+        {id:4,url:ClassD,desc:""},
+        {id:5,url:ClassK,desc:""},
+        {id:1,url:ClassA,desc:""},
+        {id:2,url:ClassB,desc:""}
       ],
       stopDropRollComplete:false,
       fireClassComplete:false,
@@ -255,6 +256,7 @@ export default {
     checkIfSlotFull(zoneNumber){
       if(this.fireClassDropZone[zoneNumber].length > 0){
         this.dropZoneOptions[zoneNumber].group.put = false;
+        this.$emit('zone-drop',{})
       }else{
         this.dropZoneOptions[zoneNumber].group.put = true;
       }
@@ -268,28 +270,31 @@ export default {
     color: white;
   }
   .drag-item{
-    border: 1px solid rgb(182, 182, 182);
-    box-shadow: 1px 1px 2px rgb(200, 200, 200);
+    border: 1px solid rgba(80,80,80, .4);
+    box-shadow: 1px 1px 2px rgba(40,40,40, .4);
     padding: 1em;
+    border-radius: 24px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   }
   .win{
     background-color: green;
   }
-
   .drop-zone-container{
-
-    min-height: 150px;
-
+    height: 150px;
+    width: 150px;
   }
   .drop-zone{
-    min-height: 140px;
+    min-height: 150px;
    background-color:white;
+
    border-radius: 50%;
     padding: 0;
     box-shadow: inset 1px 1px 2px black;
   }
   #sourceZone{
-    min-height: 125px;
-
+    min-height: 150px;
+  }
+  .drag-image{
+    width:150px;
   }
 </style>

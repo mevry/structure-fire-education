@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex">
+    <div class="white-font d-flex my-2">
         <span v-if="FirstName">Hey, {{ FirstName }}</span>
         <span class="ml-auto"><strong>Badges Earned: </strong> {{badgeQuantity()}} / 3</span>
     </div>

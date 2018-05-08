@@ -35,9 +35,6 @@ export default {
     'badge-modal':BadgeModal
   },
   mounted(){
-    if(!this.enterInfo){
-      this.$route.router.go('/enter-info');
-    }
     let self = this;
     EventBus.$on('activity-completed', function(payload){
       self.completed = payload.completed;
@@ -68,5 +65,7 @@ body{
 @page {
   size:auto
 }
-
+.white-font{
+  color:white;
+}
 </style>

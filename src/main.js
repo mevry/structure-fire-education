@@ -11,6 +11,7 @@ import Printables from './components/Printables.vue'
 import Resources from './components/Resources.vue'
 import EnterInformation from './components/EnterInformation.vue'
 import Certificate from './components/Certificate.vue'
+import About from './components/About.vue'
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,10 @@ const routes = [
   {
     path: '/enter-info',
     component: EnterInformation
+  },
+  {
+    path: '/about',
+    component: About
   }
 ]
 

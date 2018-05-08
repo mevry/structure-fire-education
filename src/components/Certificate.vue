@@ -7,23 +7,24 @@
         <div class="col-6 offset-3">
             <div class="row">
                 <div class="col">
-                    <img class="img-fluid" :src="badgePlaceholder" alt="150 placeholder">
+                    <img class="img-fluid" src="../img/jepGold.png" alt="150 placeholder">
                     <span>Jeopardy</span>    
                 </div>
                 <div class="col">
-                    <img class="img-fluid" :src="badgePlaceholder" alt="150 placeholder">
+                    <img class="img-fluid" src="../img/dragBadge.png" alt="150 placeholder">
                     <span>Drag &amp; Drop</span>    
                 </div>
                 <div class="col">
-                    <img class="img-fluid" :src="badgePlaceholder" alt="150 placeholder">
+                    <img class="img-fluid" src="../img/memBadge.png" alt="150 placeholder">
                     <span>Memory</span>    
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="d-flex">
         <span><strong>School:</strong> {{sharedStore.School}}</span>
-        <span class="ml-auto"><strong>Teacher:</strong> {{sharedStore.Teacher}}</span>
+        <span>{{new Date().getMonth()}}</span>
+        <span class=""><strong>Teacher:</strong> {{sharedStore.Teacher}}</span>
     </div>
 </div>
 </template>
@@ -37,12 +38,18 @@ export default {
             sharedStore:store.state,
             badgePlaceholder
         }
+    },
+    computed:{
+        date(){
+            re
+        }
     }
 };
 </script>
 <style scoped>
     #rootContainer{
-        border: solid 2px gray;
+        border: solid 2px rgb(196, 15, 15);
+        background-color: rgba(255,255,255,.9);
     }
 
 </style>
