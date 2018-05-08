@@ -1,17 +1,22 @@
 <template>
   <div class="container-fluid">
-
-          <h1>Printables</h1>
-          <a :href="Lab5" target="_blank">Lab 5</a>
-      </div>
+    <h1>Printables</h1>
+    <a :href="EasyDemo" target="_blank">Easy Difficulty Crossword</a>
+    <br />
+    <a :href="MedCross" target="_blank">Medium Difficulty Crossword</a>
+    <br />
+  </div>
 </template>
 <script>
-import lab5 from '../assets/lab5.pdf'
+  import lab5 from '../assets/lab5.pdf'
+  import easyDemo from '../assets/easy_demo.pdf'
+  import medCross from '../assets/medium_cross.pdf'
 export default {
   name: 'coloring',
   data(){
     return{
-      Lab5:lab5
+      EasyDemo: easyDemo,
+      MedCross: medCross
     }
   }
 };
