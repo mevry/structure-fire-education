@@ -493,7 +493,7 @@ export default {
     },
     checkJeopardyComplete(){
       if(this.attemptedQuestions >= 25){
-        if(this.score > 6000){
+        if(this.score / 7500 >= .75){
           this.sharedState.JeopardyScore = this.score;
           this.emitMethod('activity-completed', {activity:"Jeopardy", completed:true});
           console.log('Jeopardy Completed');

@@ -47,9 +47,9 @@ export default {
 
             if((this.sharedStore.JeopardyScore / 7500) >= .9 ){
                 return require('../img/badgeJepGold.png')
-            }else if((this.sharedStore.JeopardyScore / 7500) > .8){
+            }else if((this.sharedStore.JeopardyScore / 7500) >= .8){
                 return require('../img/badgeJepSilver.png')
-            }else if((this.sharedStore.JeopardyScore / 7500) > .75 ){
+            }else if((this.sharedStore.JeopardyScore / 7500) >= .75 ){
                 return require('../img/badgeJepBronze.png')
             }
         },

@@ -4,25 +4,27 @@
       <div class="modal-wrapper">
         <div class="modal-container">
 
-          <div class="modal-header">
-            <slot name="header">
+          <div class="text-center">
+            <h3>
               {{activity}} {{completionStatus}}
-            </slot>
+            </h3>
           </div>
 
-          <div class="modal-body">
-            <slot name="body">
+          <div class="text-center">
+            <h4 name="body">
               {{returnMessage}}
-            </slot>
+              </h4>
+              <img :src="badgeUrl" alt="">
+            
           </div>
 
-          <div class="modal-footer">
-            <slot name="footer">
-              You have {{badgeQuantity}} of 3 badges.
-              <button class="modal-default-button" @click="$emit('close')">
-                <router-link to="/" class="nav-item nav-link">OK</router-link>
+          <div class="text-center">
+
+              <div><h5>You have {{badgeQuantity}} of 3 badges.</h5></div>
+              <button class="btn btn-lg btn-success" @click="closeBadgeModal">
+                OK
               </button>   
-            </slot>
+
           </div>
 
         </div><!--modal-container-->
@@ -59,9 +61,24 @@ export default {
         return "Incomplete"
       }
     },
+    badgeUrl(){
+      if(this.activity == "Drag & Match"){
+        return require('../img/badgeDrag.png')
+      }else if(this.activity == "Memory"){
+        return require('../img/badgeMemory.png')
+      }else if(this.activity == "Jeopardy"){
+        if((this.sharedState.JeopardyScore / 7500) >= .9 ){
+            return require('../img/badgeJepGold.png')
+        }else if((this.sharedState.JeopardyScore / 7500) > .8){
+            return require('../img/badgeJepSilver.png')
+        }else if((this.sharedState.JeopardyScore / 7500) > .75 ){
+            return require('../img/badgeJepBronze.png')
+        }
+      }
+    },
     badgeQuantity(){
       let qty = 0;
-      if(this.sharedState.JeopardyScore > 80){
+      if((this.sharedState.JeopardyScore / 7500) >= .75 ){
         qty++
       }
       if(this.sharedState.DragDropPass){
@@ -74,6 +91,12 @@ export default {
       return qty;
       
     },
+  },
+  methods:{
+    closeBadgeModal(){
+      this.$emit('close');
+      this.$router.push('/');
+    }
   }
 
 }
@@ -107,18 +130,7 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
 
-.modal-body {
-  margin: 20px 0;
-}
-
-.modal-default-button {
-  float: right;
-}
 
 /*
  * The following styles are auto-applied to elements with

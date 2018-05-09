@@ -38,9 +38,13 @@ export default {
 
     let self = this;
     EventBus.$on('activity-completed', function(payload){
+      console.log('ACTIVITY COMPLETED')
       self.completed = payload.completed;
       self.activity = payload.activity;
-      self.showModal = true;
+      setTimeout(function(){
+        self.showModal = true;
+      }, 700);
+      
     });
   }
 }

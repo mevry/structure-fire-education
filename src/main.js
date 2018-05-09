@@ -83,7 +83,7 @@ router.beforeResolve((to,from,next)=>{
     next()
   }
 })
-new Vue({
+var vm = new Vue({
   el: '#app',
   router,
   render: h => h(App)

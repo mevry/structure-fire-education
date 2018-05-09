@@ -76,7 +76,7 @@ export default {
 			this.$game.html(this.html);
 			this.$memoryCards = $(".mem-card");
 			this.paused = false;
-     	this.guess = null;
+     		this.guess = null;
 			this.binding();
 		},
 
@@ -114,7 +114,7 @@ export default {
 			this.paused = true;
 			console.log("win fired");
 			self.sharedState.MemoryPass = true;
-			self.emitMethod('activity-completed', {activity:"Jeopardy", completed:true});
+			self.emitMethod('activity-completed', {activity:"Memory", completed:true});
 		},
 
 		showModal: function(){

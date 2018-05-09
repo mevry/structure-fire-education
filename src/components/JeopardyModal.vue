@@ -145,8 +145,8 @@ export default {
            let self = this;
            setTimeout(function(){
                self.emitMethod('submission',found);
-               }, 1000);
-           ;
+            }, 0);
+
       },
       emitMethod(evt,payload){
           EventBus.$emit(evt,payload);
