@@ -4,66 +4,69 @@
 
       </jeopardy-modal>
       <div class="col-8 offset-2">
-        <h1 class="text-center">Jeopardy</h1>
-        <p class="text-center
-        ">Select the tiles below and answer the question. You will get points for a correct answer. Get 6000 points to earn a badge!</p>
+        <h1 class="text-center neon-yellow">Jeopardy</h1>
+        <p class="text-center white-font">Select the tiles below and answer the question. You will get points for a correct answer. Get 6000 points to earn a badge!</p>
       </div>
-      <div id="jeopardyHeaderRow" class="row text-center py-1 my-3">
-        <div class="jeopardy-header col"><h5>Home<br> Safety</h5></div>
-        <div class="jeopardy-header col"><h5>Fire<br> Concepts</h5></div>
-        <div class="jeopardy-header col"><h5>Outdoor<br> Safety</h5></div>
-        <div class="jeopardy-header col"><h5>Firefighting<br> Methods</h5></div>
-        <div class="jeopardy-header col"><h5>Emergency<br> Cases</h5></div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnOne"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnOne[index].clickState}"
-              @click="!questionBank.columnOne[index].clickState && renderJeopardyModal('columnOne',index)">
-              {{(index+1)*100}}
-          </div>
-        </div>
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnTwo"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnTwo[index].clickState}"
-              @click="!questionBank.columnTwo[index].clickState && renderJeopardyModal('columnTwo',index)">
-              {{(index+1)*100}}
-          </div>
-        </div>
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnThree"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnThree[index].clickState}"
-              @click="!questionBank.columnThree[index].clickState && renderJeopardyModal('columnThree',index)">
-              {{(index+1)*100}}
-          </div>
-        </div>
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnFour"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnFour[index].clickState}"
-              @click="!questionBank.columnFour[index].clickState && renderJeopardyModal('columnFour',index)">
-              {{(index+1)*100}}
-          </div>
-        </div>
-        <div class="col">
-          <div v-for="(question,index) in questionBank.columnFive"
-              :key="question[index]"
-              class="jeopardy-cell col py-3 h2"
-              :class="{'clicked':questionBank.columnFive[index].clickState}"
-              @click="!questionBank.columnFive[index].clickState && renderJeopardyModal('columnFive',index)">
-              {{(index+1)*100}}
-          </div>
-        </div>
-      </div><!--End row-->
 
-      <h2 class="py-3" @submission="updatePoints()">Current Points: {{score}}</h2>
+      <div id="jeopardyBody" class="p-4">
+        <div id="jeopardyHeaderRow" class="row text-center pb-1 mb-3">
+          <div class="jeopardy-header col"><h5>Home<br> Safety</h5></div>
+          <div class="jeopardy-header col"><h5>Fire<br> Concepts</h5></div>
+          <div class="jeopardy-header col"><h5>Outdoor<br> Safety</h5></div>
+          <div class="jeopardy-header col"><h5>Firefighting<br> Methods</h5></div>
+          <div class="jeopardy-header col"><h5>Emergency<br> Cases</h5></div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnOne"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'correct': questionBank.columnOne[index].correct, 'incorrect':questionBank.columnOne[index].incorrect}"
+                @click="!questionBank.columnOne[index].clickState && renderJeopardyModal('columnOne',index)">
+                {{(index+1)*100}}
+            </div>
+          </div>
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnTwo"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'correct': questionBank.columnTwo[index].correct, 'incorrect':questionBank.columnTwo[index].incorrect}"
+                @click="!questionBank.columnTwo[index].clickState && renderJeopardyModal('columnTwo',index)">
+                {{(index+1)*100}}
+            </div>
+          </div>
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnThree"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'correct': questionBank.columnThree[index].correct, 'incorrect':questionBank.columnThree[index].incorrect}"
+                @click="!questionBank.columnThree[index].clickState && renderJeopardyModal('columnThree',index)">
+                {{(index+1)*100}}
+            </div>
+          </div>
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnFour"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'correct': questionBank.columnFour[index].correct, 'incorrect':questionBank.columnFour[index].incorrect}"
+                @click="!questionBank.columnFour[index].clickState && renderJeopardyModal('columnFour',index)">
+                {{(index+1)*100}}
+            </div>
+          </div>
+          <div class="col">
+            <div v-for="(question,index) in questionBank.columnFive"
+                :key="question[index]"
+                class="jeopardy-cell col py-3 h2"
+                :class="{'correct': questionBank.columnFive[index].correct, 'incorrect':questionBank.columnFive[index].incorrect}"
+                @click="!questionBank.columnFive[index].clickState && renderJeopardyModal('columnFive',index)">
+                {{(index+1)*100}}
+            </div>
+          </div>
+        </div><!--End row-->
+        <h2 class="pt-3" @submission="updatePoints()">Current Points: {{score}}</h2>
+      </div><!--End jeopardyBody-->
+
+      
   </div>
 </template>
 <script>
@@ -92,7 +95,7 @@ export default {
           },
           {
             type:"multi",
-            question:"This will allow you to escape from 2nd story houses.",
+            question:"This will allow you to escape from the 2nd story.",
             answer:[3],
             options:[
               {
@@ -437,16 +440,21 @@ export default {
      this.currentQuestionPV = (position+1)*100;
     },
     updatePoints(correct){
+
+      
       this.showJeopardyModal = false
       console.log("current point val: " + this.currentQuestionPV)
       if(correct){
         this.score += this.currentQuestionPV;
+        this.currentQuestion.correct = correct
+      }else{
+        this.currentQuestion.incorrect = true
       }
       this.checkJeopardyComplete();
     },
     checkJeopardyComplete(){
       if(this.attemptedQuestions >= 25){
-        if(this.score > 900){
+        if(this.score > 6000){
           this.sharedState.JeopardyScore = this.score;
           this.emitMethod('activity-completed', {activity:"Jeopardy", completed:true});
           console.log('Jeopardy Completed');
@@ -469,7 +477,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.container-fluid{
+#jeopardyBody{
    background-color: rgba(255,255,255,.8);
    border-radius: 4px;
    box-shadow: 1px 1px 3px rgba(41, 38, 80, .5);
@@ -480,7 +488,7 @@ export default {
    text-align: center;
    cursor: pointer;
    border: 1px solid rgba(180, 180, 180, 0.75);
-    border-radius: 6px;
+    border-radius: 3px;
  }
  .clicked{
    cursor: default;
@@ -489,7 +497,6 @@ export default {
 
  #jeopardyHeaderRow{
    border-bottom: 1px solid gray;
-   border-top: 1px solid gray;
  }
  .jeopardy-header{
 
@@ -497,6 +504,18 @@ export default {
      font-weight: bold;
    }
  }
+ .correct{
+   background-color: #eaffec;
+   box-shadow: inset 0 0 20px #0ee42a;
+   color:#8ea991;
+   cursor: default;
+ }
+.incorrect{
+  background-color: #ffeaea;
+  box-shadow: inset 0 0 20px #e40e0e;
+  color:#a98e8e;
+  cursor: default;
+}
 
 
 </style>

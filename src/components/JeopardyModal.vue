@@ -6,23 +6,18 @@
 
             <form @submit.prevent>
                 <div class="true-false" v-if="questionObject.type == 'tf'">
-                    <div class="modal-header">
+                    <div class="modal-header d-flex justify-content-between">
                         <h3>True / False</h3><br>
-                        
+                        <h3>{{pointValue}} Points</h3>
                     </div>
                     <div class="modal-body">
                         <h4>{{questionObject.question}}</h4><br>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <label for="" class="form-check-label">
-                                    <input type="radio" name="tf" value="1" class="form-check-input" v-model.number="tfAnswer"> True
-                                </label>
+
+                        <div class="d-flex justify-content-center text-center">
+                            <div class="tf-selection col py-3 mx-1" @click="toggleTf(1)" :class="{'selected':trueSelect}">
+                                <h3>True</h3>
                             </div>
-                            <div class="form-check">
-                                <label for="" class="form-check-label">
-                                    <input type="radio" name="tf" value="0"  class="form-check-input" v-model="tfAnswer"> False
-                                </label>
-                            </div>
+                            <div class="tf-selection col py-3 mx-1" @click="toggleTf(0)" :class="{'selected':falseSelect}"><h3>False</h3></div>
                         </div>
                     </div>
                 </div><!--End true-false-->
@@ -46,20 +41,22 @@
                 </div><!--End multi-->
                 <div class="fill" v-else-if="questionObject.type == 'fill'">
                     <div class="modal-header">
-                        <h3>Multiple Choice</h3><br>                   
+                        <h3>Fill In The Blank</h3><br>                   
                     </div>
                     <div class="modal-body">
                         <h4>{{questionObject.question.partOne}}</h4><input type="text" name="fill" v-model.lazy="fillAnswer"><h4>{{questionObject.question.partTwo}}</h4>
                     </div>
                 </div><!--End fill-->
     
-                <div class="modal-footer">
-                    <p>{{pointValue}} Point Question</p>
+                <div class="d-flex justify-content-between">
+                    
                     <slot name="footer">
-                        <button class="modal-default-button" @click="checkAnswer">
-                        SUBMIT
+                        <button class="btn btn-primary" @click="checkAnswer">
+                        <strong>SUBMIT</strong>
                         </button>
                     </slot>
+                    <h2 id="feedback" v-if="answerCorrect == 'Correct!'" style="color:rgb(0, 136, 107)"><strong>{{answerCorrect}}</strong></h2>
+                    <h2 id="feedback" v-else-if="answerCorrect == 'Incorrect'" style="color:red"><strong>{{answerCorrect}}</strong></h2>
                 </div>
             </form>
 
@@ -77,7 +74,10 @@ export default {
       return{
           tfAnswer:null,
           multiAnswer:null,
-          fillAnswer:''
+          fillAnswer:'',
+          trueSelect:null,
+          falseSelect:null,
+          answerCorrect:''
       }
   },
   computed:{
@@ -90,6 +90,17 @@ export default {
       }
   },
   methods:{
+      toggleTf(answer){
+          if(answer == 0){
+              this.trueSelect = false;
+              this.falseSelect = true;
+              this.tfAnswer = 0;
+          }else{
+              this.trueSelect = true;
+              this.falseSelect = false;
+              this.tfAnswer = 1;
+          }
+      },
       checkAnswer(){
           let correctAnswer = this.$props.questionObject.answer;
           let questionType = this.$props.questionObject.type;
@@ -105,12 +116,21 @@ export default {
           let found = correctAnswer.includes(
               userAnswer        
           );
-
+            if(found){
+                this.answerCorrect = "Correct!"
+            }else{
+                this.answerCorrect = "Incorrect"
+            }
           console.log("Your answer: " + userAnswer + " " + typeof(userAnswer));
           console.log("Correct answer: " + correctAnswer)
           console.log("Comparison returns: " + found)
            console.log(found ? "Answer Correct" : "Answer Incorrect");
-           this.emitMethod('submission',found);
+ 
+           let self = this;
+           setTimeout(function(){ 
+               self.emitMethod('submission',found); 
+               }, 1000);
+           ;
       },
       emitMethod(evt,payload){
           EventBus.$emit(evt,payload);
@@ -144,21 +164,19 @@ export default {
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+
 }
 
 .modal-header h3 {
   margin-top: 0;
-  color: #42b983;
+  color:  rgb(0, 53, 42);
 }
 
 .modal-body {
   margin: 20px 0;
 }
 
-.modal-default-button {
-  float: right;
-}
+
 
 /*
  * The following styles are auto-applied to elements with
@@ -181,5 +199,19 @@ export default {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+.tf-selection{
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.selected{
+    border-color: rgb(0, 136, 107);
+    background-color: rgb(103, 255, 222);
+    color: rgb(0, 53, 42)
+}
+#feedback{
+    color:rgb(149, 0, 255);
 }
 </style>
