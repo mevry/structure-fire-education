@@ -66,7 +66,7 @@
         <h2 class="pt-3" @submission="updatePoints()">Current Points: {{score}}</h2>
       </div><!--End jeopardyBody-->
 
-      
+
   </div>
 </template>
 <script>
@@ -95,25 +95,29 @@ export default {
           },
           {
             type:"multi",
-            question:"This will allow you to escape from the 2nd story.",
+            question:"This will allow you to escape from the 2nd story of a building.",
             answer:[3],
             options:[
               {
                 key:0,
-                value:"Trampoline"
+                value:"Trampoline",
+                selected:false
               },
               {
                 key:1,
-                value:"Parachute"
+                value:"Parachute",
+                selected:false
 
               },
               {
                 key:2,
-                value:"Giant Drone"
+                value:"Giant Drone",
+                selected:false
               },
               {
                 key:3,
-                value:"Rope Ladder"
+                value:"Rope Ladder",
+                selected:false
               }
             ]
           },
@@ -137,20 +141,24 @@ export default {
             options:[
               {
                 key:0,
-                value:"A Meeting Place"
+                value:"A Meeting Place",
+                selected:false
               },
               {
                 key:1,
-                value:"Sushi"
+                value:"Sushi",
+                selected:false
 
               },
               {
                 key:2,
-                value:"Smoke Detector"
+                value:"Smoke Detector",
+                selected:false
               },
               {
                 key:3,
-                value:"Rope Ladder"
+                value:"Rope Ladder",
+                selected:false
               }
             ]
           }
@@ -168,20 +176,23 @@ export default {
             options:[
               {
                 key:0,
-                value:"Class B"
+                value:"Class B",
+                selected:false
               },
               {
                 key:1,
-                value:"Class D"
-
+                value:"Class D",
+                selected:false
               },
               {
                 key:2,
-                value:"Class F"
+                value:"Class F",
+                selected:false
               },
               {
                 key:3,
-                value:"Class A"
+                value:"Class A",
+                selected:false
               }
             ]
           },
@@ -202,20 +213,24 @@ export default {
             options:[
               {
                 key:0,
-                value:"Class B"
+                value:"Class B",
+                selected:false
               },
               {
                 key:1,
-                value:"Class C"
+                value:"Class C",
+                selected:false
 
               },
               {
                 key:2,
-                value:"Class Z"
+                value:"Class Z",
+                selected:false
               },
               {
                 key:3,
-                value:"Class A"
+                value:"Class A",
+                selected:false
               }
             ]
           }
@@ -233,20 +248,24 @@ export default {
             options:[
               {
                 key:0,
-                value:"Upwind"
+                value:"Upwind",
+                selected:false
               },
               {
                 key:1,
-                value:"Parallel"
+                value:"Parallel",
+                selected:false
 
               },
               {
                 key:2,
-                value:"On top of the campfire"
+                value:"On top of the campfire",
+                selected:false
               },
               {
                 key:3,
-                value:"Downwind"
+                value:"Downwind",
+                selected:false
               }
             ]
           },
@@ -270,20 +289,24 @@ export default {
             options:[
               {
                 key:0,
-                value:"An adult"
+                value:"An adult",
+                selected:false
               },
               {
                 key:1,
-                value:"A dog"
+                value:"A dog",
+                selected:false
 
               },
               {
                 key:2,
-                value:"A cellphone"
+                value:"A cellphone",
+                selected:false
               },
               {
                 key:3,
-                value:"A police officer"
+                value:"A police officer",
+                selected:false
               }
             ]
           }
@@ -301,20 +324,24 @@ export default {
             options:[
               {
                 key:0,
-                value:"A open soda"
+                value:"A open soda",
+                selected:false
               },
               {
                 key:1,
-                value:"Dirt"
+                value:"Dirt",
+                selected:false
 
               },
               {
                 key:2,
-                value:"Towel"
+                value:"Towel",
+                selected:false
               },
               {
                 key:3,
-                value:"Fire extinguisher"
+                value:"Fire extinguisher",
+                selected:false
               }
             ]
           },
@@ -338,20 +365,24 @@ export default {
             options:[
               {
                 key:0,
-                value:"Indoor Sprinkler system"
+                value:"Indoor Sprinkler system",
+                selected:false
               },
               {
                 key:1,
-                value:"Air Conditioning"
+                value:"Air Conditioning",
+                selected:false
 
               },
               {
                 key:2,
-                value:"Automatic blast doors"
+                value:"Automatic blast doors",
+                selected:false
               },
               {
                 key:3,
-                value:"Strobe lights"
+                value:"Strobe lights",
+                selected:false
               }
             ]
           }
@@ -368,7 +399,7 @@ export default {
               partOne: "When in public, you should be aware of all the possible",
               partTwo: "of the buildings you enter.",
             },
-            answer: ["exits"]
+            answer: ["exits", "exit"]
           },
           {
             type: "multi",
@@ -377,20 +408,24 @@ export default {
             options: [
               {
                 key: 0,
-                value: "Stop, drop, and roll."
+                value: "Stop, drop, and roll.",
+                selected:false
               },
               {
                 key: 1,
-                value: "Drink Mountain Dew."
+                value: "Drink Mountain Dew.",
+                selected:false
 
               },
               {
                 key: 2,
-                value: "Dab"
+                value: "Dab",
+                selected:false
               },
               {
                 key: 3,
-                value: "Read a book"
+                value: "Read a book",
+                selected:false
               }
             ]
           },
@@ -406,20 +441,24 @@ export default {
             options:[
               {
                 key:0,
-                value:"Any time on Tuesdays"
+                value:"Any time on Tuesdays",
+                selected:false
               },
               {
                 key:1,
-                value:"Before Sundown"
+                value:"Before Sundown",
+                selected:false
 
               },
               {
                 key:2,
-                value:"12pm"
+                value:"12pm",
+                selected:false
               },
               {
                 key:3,
-                value:"Never"
+                value:"Never",
+                selected:false
               }
             ]
           }
@@ -441,7 +480,7 @@ export default {
     },
     updatePoints(correct){
 
-      
+
       this.showJeopardyModal = false
       console.log("current point val: " + this.currentQuestionPV)
       if(correct){

@@ -22,34 +22,35 @@
                     </div>
                 </div><!--End true-false-->
                 <div class="multi" v-else-if="questionObject.type == 'multi'">
-                    <div class="modal-header">
-                        <h3>Multiple Choice</h3><br>                   
+                    <div class="modal-header d-flex justify-content-between">
+                        <h3>Multiple Choice</h3><br>
+                        <h3>{{pointValue}} Points</h3>
                     </div>
                     <div class="modal-body">
                         <h4>{{questionObject.question}}</h4><br>
                         <div class="form-group">
-    
-                            <div v-for="option in questionObject.options" :key="option.key" class="form-check">
-                                <label for="" class="form-check-label">
-                                    <input type="radio" name="multi" v-bind:value="option.key" class="form-check-input" v-model.number="multiAnswer"> {{option.value}}
-                                </label>
+                            <div class="d-flex flex-wrap">
+                              <div v-for="option in questionObject.options" :key="option.key" class="col-6 mt-2 text-center px-1">
+                                  <div @click="toggleMulti(option.key)" class="multi-selection py-3"  :class="{'selected':option.selected}" style="height:100%;"><h4>{{option.value}}</h4></div>
+                              </div>
                             </div>
-    
+
                         </div>
                     </div>
-    
+
                 </div><!--End multi-->
                 <div class="fill" v-else-if="questionObject.type == 'fill'">
-                    <div class="modal-header">
-                        <h3>Fill In The Blank</h3><br>                   
+                    <div class="modal-header d-flex justify-content-between">
+                        <h3>Fill In The Blank</h3><br>
+                        <h3>{{pointValue}} Points</h3>
                     </div>
                     <div class="modal-body">
-                        <h4>{{questionObject.question.partOne}}</h4><input type="text" name="fill" v-model.lazy="fillAnswer"><h4>{{questionObject.question.partTwo}}</h4>
+                        <h4>{{questionObject.question.partOne}} <input type="text" name="fill" v-model.lazy="fillAnswer" style="width:150px; padding-left: 6px;"> {{questionObject.question.partTwo}}</h4>
                     </div>
                 </div><!--End fill-->
-    
+
                 <div class="d-flex justify-content-between">
-                    
+
                     <slot name="footer">
                         <button class="btn btn-primary" @click="checkAnswer">
                         <strong>SUBMIT</strong>
@@ -87,6 +88,9 @@ export default {
           }else{
               return true;
           }
+      },
+      fillAnswerLower(){
+        return this.fillAnswer.toLowerCase();
       }
   },
   methods:{
@@ -101,6 +105,18 @@ export default {
               this.tfAnswer = 1;
           }
       },
+      toggleMulti(val){
+        let questionArray = this.$props.questionObject.options;
+        for(let i = 0; i < questionArray.length; i++){
+          if(questionArray[i].key != val){
+            questionArray[i].selected = false;
+          }else{
+            questionArray[i].selected = true;
+            this.multiAnswer = questionArray[i].key;
+          }
+
+        }
+      },
       checkAnswer(){
           let correctAnswer = this.$props.questionObject.answer;
           let questionType = this.$props.questionObject.type;
@@ -110,11 +126,11 @@ export default {
           }else if(questionType == 'multi'){
               userAnswer = this.multiAnswer
           }else{
-              userAnswer = this.fillAnswer
+              userAnswer = this.fillAnswerLower
           }
-        
+
           let found = correctAnswer.includes(
-              userAnswer        
+              userAnswer
           );
             if(found){
                 this.answerCorrect = "Correct!"
@@ -125,10 +141,10 @@ export default {
           console.log("Correct answer: " + correctAnswer)
           console.log("Comparison returns: " + found)
            console.log(found ? "Answer Correct" : "Answer Incorrect");
- 
+
            let self = this;
-           setTimeout(function(){ 
-               self.emitMethod('submission',found); 
+           setTimeout(function(){
+               self.emitMethod('submission',found);
                }, 1000);
            ;
       },
@@ -200,7 +216,7 @@ export default {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-.tf-selection{
+.tf-selection, .multi-selection{
     padding: 5px;
     border: 1px solid gray;
     border-radius: 5px;
