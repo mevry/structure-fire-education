@@ -8,7 +8,6 @@
   </div>
 </template>
 <script>
-  import lab5 from '../assets/lab5.pdf'
   import easyDemo from '../assets/easy_demo.pdf'
   import medCross from '../assets/medium_cross.pdf'
 export default {

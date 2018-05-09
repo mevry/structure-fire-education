@@ -7,7 +7,7 @@
               <h1>Take Our Survey!</h1>
             </a>
           </div>
-
+          <printables></printables>
       </div>
 </template>
 <script>
@@ -23,6 +23,6 @@ export default {
 </script>
 <style scoped>
   #survey{
-    
+
   }
 </style>
