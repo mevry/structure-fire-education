@@ -13,15 +13,15 @@
                 <div class="col">
                     <img class="img-fluid" :src="JeopardyCertificate" alt="150 placeholder">
                     <span>Jeopardy</span><br>
-                    <span>{{sharedStore.JeopardyScore}} pts. ({{JeopardyPercentage}}%)</span>    
+                    <span>{{sharedStore.JeopardyScore}} pts. ({{JeopardyPercentage}}%)</span>
                 </div>
                 <div class="col">
-                    <img class="img-fluid" src="../img/extinguisher.png" alt="150 placeholder">
-                    <span>Drag &amp; Match</span>    
+                    <img class="img-fluid" src="../img/badgeDrag.png" alt="150 placeholder">
+                    <span>Drag &amp; Match</span>
                 </div>
                 <div class="col">
-                    <img class="img-fluid" src="../img/memBadge.png" alt="150 placeholder">
-                    <span>Memory</span>    
+                    <img class="img-fluid" src="../img/badgeMemory.png" alt="150 placeholder">
+                    <span>Memory</span>
                 </div>
             </div>
         </div>
@@ -35,24 +35,22 @@
 </template>
 <script>
 import store from '../store'
-import badgePlaceholder from '../img/150x150.png' 
 export default {
     data(){
-        return{  
+        return{
             name: 'certificate',
-            sharedStore:store.state,
-            badgePlaceholder
+            sharedStore:store.state
         }
     },
     computed:{
         JeopardyCertificate(){
 
-            if((this.sharedStore.JeopardyScore / 7500) >= 1 ){
-                return require('../img/jepGold.png')
-            }else if((this.sharedStore.JeopardyScore / 7500) > .9 ){
-                return require('../img/jepSilver.png')
-            }else if((this.sharedStore.JeopardyScore / 7500) > .8 ){
-                return require('../img/jepBronze.png')
+            if((this.sharedStore.JeopardyScore / 7500) >= .9 ){
+                return require('../img/badgeJepGold.png')
+            }else if((this.sharedStore.JeopardyScore / 7500) > .8){
+                return require('../img/badgeJepSilver.png')
+            }else if((this.sharedStore.JeopardyScore / 7500) > .75 ){
+                return require('../img/badgeJepBronze.png')
             }
         },
         JeopardyPercentage(){
