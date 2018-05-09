@@ -145,7 +145,7 @@ export default {
            let self = this;
            setTimeout(function(){
                self.emitMethod('submission',found);
-            }, 0);
+            }, 750);
 
       },
       emitMethod(evt,payload){
