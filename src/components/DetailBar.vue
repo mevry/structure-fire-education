@@ -8,7 +8,7 @@
 import store from '../store.js'
 import EventBus from '../event-bus.js'
 export default {
-  name:"site-header",
+  name:"detail-bar",
   data (){
     return {
       sharedState: store.state

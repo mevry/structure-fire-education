@@ -41,7 +41,7 @@
         </div><!--End form-row-->
         <div class="form-row">
           <div class="col">
-            <button @click="checkForm" class="btn btn-warning">Save</button>
+            <button @click="checkForm" type="button" class="btn btn-warning">Save</button>
           </div>
         </div><!--End form-row-->
       </form>

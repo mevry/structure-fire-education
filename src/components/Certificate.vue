@@ -1,18 +1,23 @@
 <template>
-<div id="rootContainer" class="text-center p-5 visible-print-block">
-    <h1>Certificate of Completion</h1>
+<div id="rootContainer" class="text-center p-2 visible-print-block">
+    <div class="d-flex justify-content-between">
+        <div><img src="../img/TFDlogo_150h.png" alt="Tacoma Fire Department Logo" style="width:150px"></div>
+        <h1 class="align-self-end" style="">Certificate of Completion</h1>
+        <div><img src="../img/UWLogoPurple_150h.png" alt="Tacoma Fire Department Logo" style="width:150px"></div>
+    </div>
     <h1 class="display-3">{{sharedStore.FirstName}} {{sharedStore.LastName}}</h1>
-    <h2>has successfully completed the online <br>TFD Fire Safety Activities.</h2>
+    <h2>has successfully completed the online <br>Tacoma Fire Department Safety Activities.</h2>
     <div class="row py-5">
         <div class="col-6 offset-3">
             <div class="row">
                 <div class="col">
-                    <img class="img-fluid" src="../img/jepGold.png" alt="150 placeholder">
-                    <span>Jeopardy</span>    
+                    <img class="img-fluid" :src="JeopardyCertificate" alt="150 placeholder">
+                    <span>Jeopardy</span><br>
+                    <span>{{sharedStore.JeopardyScore}} pts. ({{JeopardyPercentage}}%)</span>    
                 </div>
                 <div class="col">
-                    <img class="img-fluid" src="../img/dragBadge.png" alt="150 placeholder">
-                    <span>Drag &amp; Drop</span>    
+                    <img class="img-fluid" src="../img/extinguisher.png" alt="150 placeholder">
+                    <span>Drag &amp; Match</span>    
                 </div>
                 <div class="col">
                     <img class="img-fluid" src="../img/memBadge.png" alt="150 placeholder">
@@ -40,8 +45,18 @@ export default {
         }
     },
     computed:{
-        date(){
-            re
+        JeopardyCertificate(){
+
+            if((this.sharedStore.JeopardyScore / 7500) >= 1 ){
+                return require('../img/jepGold.png')
+            }else if((this.sharedStore.JeopardyScore / 7500) > .9 ){
+                return require('../img/jepSilver.png')
+            }else if((this.sharedStore.JeopardyScore / 7500) > .8 ){
+                return require('../img/jepBronze.png')
+            }
+        },
+        JeopardyPercentage(){
+            return Math.round(this.sharedStore.JeopardyScore/7500 * 100)
         }
     },
     methods:{

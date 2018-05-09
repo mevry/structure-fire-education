@@ -61,14 +61,27 @@ const router = new VueRouter({
 router.beforeResolve((to,from,next) =>{
   
     if(!store.state.CompletedInfo && to.path != '/enter-info'){
-      console.log("infinite loop")
-      next({path: '/enter-info'})
-      
+      next({path: '/enter-info'})      
     }else{
-      console.log("next called")
+
       next()
     }
  
+})
+router.beforeResolve((to,from,next)=>{
+  if(store.state.CompletedInfo && to.path == '/enter-info'){
+    next(false)    
+  }else{
+    next()
+  }
+})
+router.beforeResolve((to,from,next)=>{
+  //badgeQty less than 3, disable
+  if(to.path == '/certificate' && (store.state.JeopardyScore < 80 || store.state.DragDropPass != true || store.state.MemoryPass != true)){
+    next(false)
+  }else{
+    next()
+  }
 })
 new Vue({
   el: '#app',

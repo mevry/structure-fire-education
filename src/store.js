@@ -6,8 +6,8 @@ export default {
         "School":null,
         "Teacher":null,
         "JeopardyScore":null,
-        "DragDropPass":false,
-        "MemoryPass":false,
+        "DragDropPass":null,
+        "MemoryPass":null,
         "CompletedInfo":false
     },
     setFirst(firstName){
