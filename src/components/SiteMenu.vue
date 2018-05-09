@@ -37,11 +37,7 @@ h1{
     color: white;
     margin-bottom: 0;
 }
-body {
-    color: #cead49;
-    color: #8c52c6;
-    color: #689f4b
-}
+
 </style>
 
 

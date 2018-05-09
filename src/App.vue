@@ -35,6 +35,7 @@ export default {
     'badge-modal':BadgeModal
   },
   mounted(){
+
     let self = this;
     EventBus.$on('activity-completed', function(payload){
       self.completed = payload.completed;

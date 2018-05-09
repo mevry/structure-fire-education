@@ -12,7 +12,7 @@ import Resources from './components/Resources.vue'
 import EnterInformation from './components/EnterInformation.vue'
 import Certificate from './components/Certificate.vue'
 import About from './components/About.vue'
-
+import store from './store'
 Vue.use(VueRouter)
 
 const routes = [
@@ -58,6 +58,18 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeResolve((to,from,next) =>{
+  
+    if(!store.state.CompletedInfo && to.path != '/enter-info'){
+      console.log("infinite loop")
+      next({path: '/enter-info'})
+      
+    }else{
+      console.log("next called")
+      next()
+    }
+ 
+})
 new Vue({
   el: '#app',
   router,

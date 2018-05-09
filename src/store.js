@@ -1,14 +1,14 @@
 export default {
     debug: true,
     state:{
-        "FirstVisit":true,
-        "FirstName":"",
-        "LastName":"",
-        "School":"",
-        "Teacher":"",
+        "FirstName":null,
+        "LastName":null,
+        "School":null,
+        "Teacher":null,
         "JeopardyScore":null,
         "DragDropPass":false,
-        "MemoryPass":false
+        "MemoryPass":false,
+        "CompletedInfo":false
     },
     setFirst(firstName){
         this.state.FirstName = firstName
