@@ -324,7 +324,7 @@ export default {
             options:[
               {
                 key:0,
-                value:"A open soda",
+                value:"An open soda",
                 selected:false
               },
               {
