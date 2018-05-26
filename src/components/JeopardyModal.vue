@@ -58,6 +58,7 @@
                     </slot>
                     <h2 id="feedback" v-if="answerCorrect == 'Correct!'" style="color:rgb(0, 136, 107)"><strong>{{answerCorrect}}</strong></h2>
                     <h2 id="feedback" v-else-if="answerCorrect == 'Incorrect'" style="color:red"><strong>{{answerCorrect}}</strong></h2>
+                    <h4 id="feedback" v-else-if="answerCorrect == 'Please answer the question'">{{answerCorrect}}</h4>
                 </div>
             </form>
 
@@ -78,7 +79,8 @@ export default {
           fillAnswer:'',
           trueSelect:null,
           falseSelect:null,
-          answerCorrect:''
+          answerCorrect:'',
+          selectedAnswer:false
       }
   },
   computed:{
@@ -95,6 +97,7 @@ export default {
   },
   methods:{
       toggleTf(answer){
+          this.selectedAnswer = true;
           if(answer == 0){
               this.trueSelect = false;
               this.falseSelect = true;
@@ -106,6 +109,7 @@ export default {
           }
       },
       toggleMulti(val){
+        this.selectedAnswer = true;
         let questionArray = this.$props.questionObject.options;
         for(let i = 0; i < questionArray.length; i++){
           if(questionArray[i].key != val){
@@ -118,6 +122,7 @@ export default {
         }
       },
       checkAnswer(){
+        if(this.selectedAnswer == true){
           let correctAnswer = this.$props.questionObject.answer;
           let questionType = this.$props.questionObject.type;
             let userAnswer;
@@ -137,6 +142,7 @@ export default {
             }else{
                 this.answerCorrect = "Incorrect"
             }
+            this.selectedAnswer = false;
           console.log("Your answer: " + userAnswer + " " + typeof(userAnswer));
           console.log("Correct answer: " + correctAnswer)
           console.log("Comparison returns: " + found)
@@ -146,7 +152,9 @@ export default {
            setTimeout(function(){
                self.emitMethod('submission',found);
             }, 750);
-
+        }else{
+          this.answerCorrect = "Please answer the question";
+        }
       },
       emitMethod(evt,payload){
           EventBus.$emit(evt,payload);

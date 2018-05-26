@@ -2,28 +2,32 @@
   <transition name="modal">
     <div class="modal-mask">
       <div class="modal-wrapper">
-        <div class="modal-container">
+        <div class="modal-container text-center">
 
-          <div class="text-center">
+          <div class="">
             <h3>
               {{activity}} {{completionStatus}}
             </h3>
           </div>
 
-          <div class="text-center">
-            <h4 name="body">
-              {{returnMessage}}
-              </h4>
-              <img :src="badgeUrl" alt="">
-            
-          </div>
 
-          <div class="text-center">
+            <div>
+              <h4 name="body">
+                {{returnMessage}}
+                </h4>
+                <transition name="fade" mode="out-in" :duration="1500">
+                  <img class="badge-img" :src="badgeUrl" alt="Badge Earned">
+                </transition>
+            </div>
+
+
+
+          <div class="">
 
               <div><h5>You have {{badgeQuantity}} of 3 badges.</h5></div>
               <button class="btn btn-lg btn-success" @click="closeBadgeModal">
                 OK
-              </button>   
+              </button>
 
           </div>
 
@@ -87,9 +91,9 @@ export default {
       if(this.sharedState.MemoryPass){
         qty++
       }
-      
+
       return qty;
-      
+
     },
   },
   methods:{
@@ -129,7 +133,10 @@ export default {
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
-
+.badge-img{
+  transition: all 1s ease;
+  transition-delay: 5s;
+}
 
 
 /*

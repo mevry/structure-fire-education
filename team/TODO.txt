@@ -9,7 +9,7 @@ DetailBar
 
 SiteMenu
 - Description with each
-- Conditional certificate link?
+
 
 Jeopardy
 - Tile styles
@@ -17,8 +17,9 @@ Jeopardy
 - Current Points styling?
 - add reset
 
+
 JeopardyModal
-- Change multiple choice selection to text box/square
+
 - Validation before submission (must select something)
 
 Drag & Drop
