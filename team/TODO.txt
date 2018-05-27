@@ -2,6 +2,7 @@ General Site Requirements
 * Separate questionBank on prod build (so TFD can customize it)
 - W3C compliant?
 - Code comments?
+- On all activities complete, redirect to certificate?
 
 SiteHeader
 - branding (TFD logo)?
@@ -15,5 +16,6 @@ Memory
 Resources and about page
 - Add content
 
-
-
+Certificate
+- Add print button?
+- Add description/instructions to print
