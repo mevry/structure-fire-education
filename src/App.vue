@@ -76,4 +76,11 @@ body{
 .neon-yellow{
   color: #e3ff2c;
 }
+  .btn-warning{
+    background-color: #e3ff2c;
+    &:hover{
+      background-color: darken(#e3ff2c,15%);
+    }
+    border-color: darken(#e3ff2c,15%);
+  }
 </style>

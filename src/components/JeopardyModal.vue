@@ -122,35 +122,42 @@ export default {
         }
       },
       checkAnswer(){
-        if(this.selectedAnswer == true){
-          let correctAnswer = this.$props.questionObject.answer;
-          let questionType = this.$props.questionObject.type;
-            let userAnswer;
-          if(questionType == 'tf'){
-            userAnswer = this.boolAnswer
-          }else if(questionType == 'multi'){
-              userAnswer = this.multiAnswer
-          }else{
-              userAnswer = this.fillAnswerLower
-          }
+        if(this.selectedAnswer == true || this.fillAnswer.length > 0){
+            let correctAnswer = this.$props.questionObject.answer;
+            let questionType = this.$props.questionObject.type;
+                let userAnswer;
+            if(questionType == 'tf'){
+                userAnswer = this.boolAnswer
+            }else if(questionType == 'multi'){
+                userAnswer = this.multiAnswer
+            }else{
+                userAnswer = this.fillAnswerLower
+            }
 
-          let found = correctAnswer.includes(
-              userAnswer
-          );
+            let found = correctAnswer.includes(
+                userAnswer
+            );
             if(found){
                 this.answerCorrect = "Correct!"
             }else{
                 this.answerCorrect = "Incorrect"
             }
-            this.selectedAnswer = false;
-          console.log("Your answer: " + userAnswer + " " + typeof(userAnswer));
-          console.log("Correct answer: " + correctAnswer)
-          console.log("Comparison returns: " + found)
-           console.log(found ? "Answer Correct" : "Answer Incorrect");
+        this.selectedAnswer = false;
 
            let self = this;
            setTimeout(function(){
-               self.emitMethod('submission',found);
+                self.emitMethod('submission',found);
+                if(questionType == 'tf'){
+                    self.trueSelect = false;
+                    self.falseSelect = false;
+                }else if(questionType == 'multi'){
+                    let questionArray = self.$props.questionObject.options;
+                    for(let i = 0; i < questionArray.length; i++){
+                        questionArray[i].selected = false;
+                    }
+                }else{
+                    self.fillAnswer = '';
+                }
             }, 750);
         }else{
           this.answerCorrect = "Please answer the question";

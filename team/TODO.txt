@@ -1,41 +1,19 @@
 General Site Requirements
-
+* Separate questionBank on prod build (so TFD can customize it)
+- W3C compliant?
+- Code comments?
 
 SiteHeader
-- branding (TFD logo)
+- branding (TFD logo)?
 
 DetailBar
 - Badge icons
 
-SiteMenu
-- Description with each
-
-
-Jeopardy
-- Tile styles
-  -> Hover style
-- Current Points styling?
-- add reset
-
-
-JeopardyModal
-
-- Validation before submission (must select something)
-
-Drag & Drop
-- Fire Classes
-  -> Smoother animation
-
 Memory
-- vertical center fireman?
+- Credit to author
 
-Printables
-
-Resources
-
-Certificate
-- Use updated badges
-
+Resources and about page
+- Add content
 
 
 

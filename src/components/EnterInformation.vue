@@ -84,13 +84,7 @@ export default {
   h1{
     color: #e3ff2c;
   }
-  .btn-warning{
-    background-color: #e3ff2c;
-    &:hover{
-      background-color: darken(#e3ff2c,15%);
-    }
-    border-color: darken(#e3ff2c,15%);
-  }
+
   .error-list{
     color: red;
   }

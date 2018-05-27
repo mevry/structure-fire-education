@@ -265,7 +265,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
   #rootContainer{
     font-family: 'Century Gothic', sans-serif;
     color: white;
@@ -276,6 +276,10 @@ export default {
     padding: 1em;
     border-radius: 24px;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
+  }
+  .drag-item:hover,.drag-image:hover{
+    cursor: all-scroll;
   }
   .win{
     box-shadow: 0 0 16px 6px #0ee42a !important;
