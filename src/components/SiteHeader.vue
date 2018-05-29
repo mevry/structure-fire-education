@@ -22,7 +22,7 @@ export default {
   computed:{
     certificateClass(){
       console.log("certificate ready fired")
-      if(this.sharedState.JeopardyScore > 80 && this.sharedState.DragDropPass == true && this.sharedState.MemoryPass == true){
+      if(this.sharedState.JeopardyScore >= (.75 * 7500) && this.sharedState.DragDropPass == true && this.sharedState.MemoryPass == true){
         console.log("certificate ready is true")
         return false
       }else{
@@ -31,7 +31,7 @@ export default {
       }
     },
     CertificateIcon(){
-      if(this.sharedState.JeopardyScore > 80 && this.sharedState.DragDropPass == true && this.sharedState.MemoryPass == true){
+      if(this.sharedState.JeopardyScore >= (.75 * 7500) && this.sharedState.DragDropPass == true && this.sharedState.MemoryPass == true){
         return require("../img/iconCert2.png")
       }else{
         return require("../img/iconCert.png")

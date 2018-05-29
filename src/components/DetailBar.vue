@@ -23,7 +23,7 @@ export default {
     badgeQuantity(){
       console.log("badgeQuantity fired")
       let qty = 0;
-      if(this.sharedState.JeopardyScore > 80){
+      if(this.sharedState.JeopardyScore >= (.75 * 7500)){
         qty++
       }
       if(this.sharedState.DragDropPass){

@@ -15,9 +15,9 @@
               <h4 name="body">
                 {{returnMessage}}
                 </h4>
-                <transition name="fade" mode="out-in" :duration="1500">
+
                   <img class="badge-img" :src="badgeUrl" alt="Badge Earned">
-                </transition>
+
             </div>
 
 
@@ -39,6 +39,12 @@
 <script>
 import store from '../store'
 import EventBus from '../event-bus'
+import badgeDrag from '../img/badgeDrag.png'
+import badgeMemory from '../img/badgeMemory.png'
+import badgeJepGold from '../img/badgeJepGold.png'
+import badgeJepSilver from '../img/badgeJepSilver.png'
+import badgeJepBronze from '../img/badgeJepBronze.png'
+
 export default {
   name:"badge-earned-modal",
   props:['completed','activity'],
@@ -55,7 +61,7 @@ export default {
       if(this.completed){
         return "You earned a badge!"
       }else{
-        return "Please reload the activity and try again."
+        return "Please reset the activity and try again."
       }
     },
     completionStatus(){
@@ -67,16 +73,16 @@ export default {
     },
     badgeUrl(){
       if(this.activity == "Drag & Match"){
-        return require('../img/badgeDrag.png')
+        return badgeDrag
       }else if(this.activity == "Memory"){
-        return require('../img/badgeMemory.png')
+        return badgeMemory
       }else if(this.activity == "Jeopardy"){
         if((this.sharedState.JeopardyScore / 7500) >= .9 ){
-            return require('../img/badgeJepGold.png')
+            return badgeJepGold
         }else if((this.sharedState.JeopardyScore / 7500) > .8){
-            return require('../img/badgeJepSilver.png')
+            return badgeJepSilver
         }else if((this.sharedState.JeopardyScore / 7500) > .75 ){
-            return require('../img/badgeJepBronze.png')
+            return badgeJepBronze
         }
       }
     },
