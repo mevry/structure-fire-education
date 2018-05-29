@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid text-center py-3">
-<h3 class="neon-yellow">Select an activity below to get started</h3>
+<h3 class="neon-yellow">Choose from one of the activities below.</h3>
     <div class="d-flex justify-content-around mt-3 pt-3 white-font">
 
         <div class="mx-2">

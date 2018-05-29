@@ -20,7 +20,7 @@
           <div class="col">
             <div v-for="(question,index) in questionBank.columnOne"
                 :key="question[index]"
-                class="jeopardy-cell col py-3 h2"
+                class="jeopardy-cell col py-3 mb-2 h2"
                 :class="{'correct': questionBank.columnOne[index].correct, 'incorrect':questionBank.columnOne[index].incorrect}"
                 @click="!questionBank.columnOne[index].clickState && renderJeopardyModal('columnOne',index)">
                 {{(index+1)*100}}
@@ -29,7 +29,7 @@
           <div class="col">
             <div v-for="(question,index) in questionBank.columnTwo"
                 :key="question[index]"
-                class="jeopardy-cell col py-3 h2"
+                class="jeopardy-cell col py-3 mb-2 h2"
                 :class="{'correct': questionBank.columnTwo[index].correct, 'incorrect':questionBank.columnTwo[index].incorrect}"
                 @click="!questionBank.columnTwo[index].clickState && renderJeopardyModal('columnTwo',index)">
                 {{(index+1)*100}}
@@ -38,7 +38,7 @@
           <div class="col">
             <div v-for="(question,index) in questionBank.columnThree"
                 :key="question[index]"
-                class="jeopardy-cell col py-3 h2"
+                class="jeopardy-cell col py-3 mb-2 h2"
                 :class="{'correct': questionBank.columnThree[index].correct, 'incorrect':questionBank.columnThree[index].incorrect}"
                 @click="!questionBank.columnThree[index].clickState && renderJeopardyModal('columnThree',index)">
                 {{(index+1)*100}}
@@ -47,7 +47,7 @@
           <div class="col">
             <div v-for="(question,index) in questionBank.columnFour"
                 :key="question[index]"
-                class="jeopardy-cell col py-3 h2"
+                class="jeopardy-cell col py-3 mb-2 h2"
                 :class="{'correct': questionBank.columnFour[index].correct, 'incorrect':questionBank.columnFour[index].incorrect}"
                 @click="!questionBank.columnFour[index].clickState && renderJeopardyModal('columnFour',index)">
                 {{(index+1)*100}}
@@ -56,14 +56,14 @@
           <div class="col">
             <div v-for="(question,index) in questionBank.columnFive"
                 :key="question[index]"
-                class="jeopardy-cell col py-3 h2"
+                class="jeopardy-cell col py-3 mb-2 h2"
                 :class="{'correct': questionBank.columnFive[index].correct, 'incorrect':questionBank.columnFive[index].incorrect}"
                 @click="!questionBank.columnFive[index].clickState && renderJeopardyModal('columnFive',index)">
                 {{(index+1)*100}}
             </div>
           </div>
         </div><!--End row-->
-        <div class="row align-items-center px-3"><h4 class="" @submission="updatePoints()"><strong>Current Points:</strong> {{score}}</h4>
+        <div class="row align-items-center px-3"><h4 class="mb-0" @submission="updatePoints()"><strong>Current Points:</strong> {{score}}</h4>
         <div v-if="attemptedQuestions >= 25" class="ml-auto"><button @click="resetJeopardy()" class="btn btn-warning">Reset Activity</button></div></div>      
       </div><!--End jeopardyBody-->
   </div>

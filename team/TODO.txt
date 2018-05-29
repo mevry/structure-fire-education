@@ -16,6 +16,3 @@ Memory
 Resources and about page
 - Add content
 
-Certificate
-- Add print button?
-- Add description/instructions to print
