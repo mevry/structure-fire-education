@@ -6,21 +6,19 @@
         <h1>Take Our Survey!</h1>
       </a>
     </div>
-    <printables></printables>
+    <printables class="p-3"></printables>
     <br />
 
-    <div class="resource_container">
+    <div class="resource_container p-3">
       <h1>Further Information</h1>
-      <a href="https://www.usfa.fema.gov/">U.S. Fire Administration Home Page</a>
-      <br />
-      <a href="http://depts.washington.edu/learncpr/quickcpr.html">U.W. Basic CPR Instruction</a>
-      <br />
-      <a href="https://www.cityoftacoma.org/government/city_departments/fire/divisions/emergency_medical_services/c_p_r">City of Tacoma CPR Class Schedule</a>
-      <br />
-      <a href="https://www.cityoftacoma.org/government/city_departments/fire">Tacoma Fire Dept Home Page</a>
-      <br />     
-      <a href="https://www.piercecountywa.org/980/Fire-Prevention-Bureau">Pierce County Fire Prevention Bureau</a>
-      <br />
+      <ul class="list-unstyled">
+        <li><a href="https://www.usfa.fema.gov/">U.S. Fire Administration Home Page</a></li>  
+        <li><a href="http://depts.washington.edu/learncpr/quickcpr.html">U.W. Basic CPR Instruction</a></li>  
+        <li><a href="https://www.cityoftacoma.org/government/city_departments/fire/divisions/emergency_medical_services/c_p_r">City of Tacoma CPR Class Schedule</a></li>  
+        <li><a href="https://www.cityoftacoma.org/government/city_departments/fire">Tacoma Fire Dept Home Page</a></li>   
+        <li><a href="https://www.piercecountywa.org/980/Fire-Prevention-Bureau">Pierce County Fire Prevention Bureau</a></li>
+      </ul>
+
     </div>
   </div>
 </template>
