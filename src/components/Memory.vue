@@ -41,6 +41,10 @@ import EventBus from '../event-bus'
 import store from '../store'
 
 export default {
+// Memory Game
+// © 2014 Nate Wiley
+// License -- MIT
+
   name: 'memory',
   data(){
 	  return {
